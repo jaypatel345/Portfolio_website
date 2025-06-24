@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me</title>
+    <link rel="stylesheet" href="output.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#111] text-white font-['Nunito']">
+
+    <!-- Main popup container with animation classes -->
+    <div id="aboutPopup" class="bg-[#232323] rounded-2xl p-8 md:p-12 max-w-4xl w-full mx-auto mt-20 relative z-50 shadow-lg
+            opacity-0 scale-95 transform transition duration-500 ease-out">
+        <button id="aboutCloseBtn"
+            class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
+
+        <div class="flex flex-col md:flex-row gap-8">
+            <!-- Left: Text -->
+            <div class="flex-1">
+                <h2 class="text-cyan-400 text-2xl font-bold mb-4">ABOUT ME</h2>
+                <p class="text-gray-200 mb-4">
+                    Hi, I’m Jay Patel — a front-end developer. I enjoy creating clean,
+                    responsive, and user-friendly websites that not only look great
+                    but also feel smooth and intuitive to use. My go-to tools are React.js, Tailwind CSS, and
+                    JavaScript, and I’m always focused on building experiences that connect with users.
+                    I’m also comfortable working with Node.js, MongoDB. Whether
+                    it’s a portfolio, a web app, or something totally new. I like to think through both the design and
+                    the tech to build something meaningful.
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm">#javascript</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm">#react.js</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm">#node.js</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm">#express.js</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm">#mongoDB</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm">#tailwind</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm">#github</span>
+                </div>
+
+                <h3 class="text-cyan-400 text-lg font-semibold mt-2 mb-3">MERN STACK</h3>
+                <div class="flex items-center space-x-8 mb-2">
+                    <!-- MongoDB -->
+                    <div class="relative group flex flex-col items-center">
+                        <img src="./assets/icons/mongodb.svg" alt="MongoDB" class="w-10 h-10 mb-1" />
+                        <span class="text-green-400 font-bold tracking-widest">M</span>
+                        <div
+                            class="absolute bottom-14 bg-green-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                            MongoDB
+                        </div>
+                    </div>
+
+                    <!-- Express -->
+                    <div class="relative group flex flex-col items-center">
+                        <img src="./assets/icons/express.svg" alt="Express" class="w-10 h-10 mb-1" />
+                        <span class="text-gray-300 font-bold tracking-widest">E</span>
+                        <div
+                            class="absolute bottom-14 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                            Express.js
+                        </div>
+                    </div>
+
+                    <!-- React -->
+                    <div class="relative group flex flex-col items-center">
+                        <img src="./assets/icons/react.svg" alt="React" class="w-10 h-10 mb-1" />
+                        <span class="text-cyan-400 font-bold tracking-widest">R</span>
+                        <div
+                            class="absolute bottom-14 bg-blue-400 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                            React.js
+                        </div>
+                    </div>
+
+                    <!-- Node.js -->
+                    <div class="relative group flex flex-col items-center">
+                        <img src="./assets/icons/node.svg" alt="Node.js" class="w-10 h-10 mb-1" />
+                        <span class="text-green-500 font-bold tracking-widest">N</span>
+                        <div
+                            class="absolute bottom-14 bg-green-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                            Node.js
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Illustration -->
+            <div class="flex items-center justify-center md:justify-end">
+                <img src="./assets/images/coder.svg" alt="Developer Illustration" class="max-w-xs w-full" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Animation trigger script (only runs if injected via fetch) -->
+    <script>
+        window.addEventListener("load", () => {
+            const popup = document.getElementById("aboutPopup");
+            if (popup) {
+                setTimeout(() => {
+                    popup.classList.remove("opacity-0", "scale-95");
+                    popup.classList.add("opacity-100", "scale-100");
+                }, 50);
+            }
+        });
+    </script>
+</body>
+
+</html>
