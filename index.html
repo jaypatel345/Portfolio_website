@@ -2,17 +2,145 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="font.css" />
-  <link rel="stylesheet" href="output.css" />
-  <link rel="stylesheet" href="style.css" />
-  <!-- Link Swiper's CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jay Patel - MERN Stack Developer Portfolio">
+  <meta name="keywords" content="Jay Patel, MERN Stack, React.js, Node.js, MongoDB, Developer, Portfolio">
+  <meta name="author" content="Jay Patel">
+  <title>Jay Patel - MERN Stack Developer</title>
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="font.css" as="style">
+  <link rel="preload" href="output.css" as="style">
+  <link rel="preload" href="style.css" as="style">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="font.css">
+  <link rel="stylesheet" href="output.css">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link href="https://cdn.openai.com/fonts/OpenAISans.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Demo styles -->
+
+  <!-- Critical styles -->
   <style>
+    /* CSS Variables for theming */
+    :root {
+      --bg-primary: #111;
+      --bg-secondary: #232323;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b2c3;
+      --text-muted: #999;
+      --accent-primary: #1788ae;
+      --accent-secondary: #4595eb;
+      --accent-tertiary: #23b9eb;
+      --border-color: #444;
+      --card-bg: #1a1a1a;
+      --input-bg: #2a2a2a;
+      --input-border: #444;
+      --input-text: #ffffff;
+      --shadow-color: rgba(0, 0, 0, 0.3);
+    }
+
+    /* Light theme variables */
+    .light {
+      --bg-primary: #f4f5f57b;
+      --bg-secondary: #f8f9fa;
+      --text-primary: #1a1a1a;
+      --text-secondary: #6c757d;
+      --text-muted: #495057;
+      --accent-primary: #1788ae;
+      --accent-secondary: #4595eb;
+      --accent-tertiary: #23b9eb;
+      --border-color: #dee2e6;
+      --card-bg: #ffffff;
+      --input-bg: #ffffff;
+      --input-border: #ced4da;
+      --input-text: #1a1a1a;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Dark theme variables */
+    .dark {
+      --bg-primary: #111;
+      --bg-secondary: #232323;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b2c3;
+      --text-muted: #999;
+      --accent-primary: #1788ae;
+      --accent-secondary: #4595eb;
+      --accent-tertiary: #23b9eb;
+      --border-color: #444;
+      --card-bg: #1a1a1a;
+      --input-bg: #2a2a2a;
+      --input-border: #444;
+      --input-text: #ffffff;
+      --shadow-color: rgba(0, 0, 0, 0.3);
+    }
+
+    /* Apply theme variables */
+    html {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-family: "OpenAI Sans", sans-serif;
+    }
+
+    /* Theme-aware transitions for smooth switching */
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* Theme-aware form styling */
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    /* Theme-aware icon colors */
+    .theme-icon {
+      color: var(--text-primary);
+    }
+
+    /* Theme-aware text colors */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: var(--text-primary);
+    }
+
+    p,
+    span,
+    div {
+      color: var(--text-primary);
+    }
+
+    /* Theme-aware background colors */
+    section,
+    header,
+    footer {
+      border: none !important;
+      background: transparent !important;
+    }
+
+    /* Theme-aware card backgrounds */
+    .card,
+    .project-card {
+      background-color: var(--card-bg);
+      border-color: var(--border-color);
+    }
+
     .swiper {
       width: 100%;
       height: 100%;
@@ -28,144 +156,70 @@
 
     .swiper-button-next,
     .swiper-button-prev {
-      color: #1788ae;
+      color: var(--accent-primary);
     }
 
     .swiper-pagination-bullet {
-      background-color: #23b9eb;
+      background-color: var(--accent-tertiary);
     }
   </style>
+
+  <!-- Defer non-critical scripts -->
   <script src="./matter.js" defer></script>
 </head>
 
-<body class="bg-[#111] scroll-smooth text-white font-['Nunito']">
-  <section class="flex flex-col justify-between h-screen ">
+<body class="scroll-smooth ">
+  <section class="flex flex-col justify-between h-screen bg-transparent ">
     <header class="z-10 pointer-events-none flex items-center justify-between w-full px-4 mt-4 max-w-screen-xl mx-auto">
-      <!-- <svg width="70" height="70" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#1595B6" />
-            <stop offset="100%" stop-color="#00AEEF" />
-          </linearGradient>
-        </defs>
-        <path d="M280 50 L280 250 Q280 300 230 300 L120 300 L120 270 L230 270 Q250 270 250 250 L250 50 Z" stroke="white"
-          stroke-opacity="0.4" stroke-width="10" />
-        <path d="M260 70 L260 240 Q260 280 230 280 L140 280 L140 260 L230 260 Q240 260 240 240 L240 70 Z"
-          stroke="url(#paint0_linear)"stroke-opacity="0.4" stroke-width="10" />
+
+
+      <!-- <svg width="50" height="50" viewBox="0 0 177 255" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M47.7206 95.4082C29.9906 95.4082 15.6176 109.776 15.6176 127.5C15.6176 145.224 29.9906 159.592 47.7206 159.592H80.6912V127.5V95.4082H47.7206ZM128.412 79.7959L129.279 79.7959C147.009 79.7959 161.382 65.4279 161.382 47.7041C161.382 29.9802 147.009 15.6122 129.279 15.6122H96.3088V79.7959L128.412 79.7959ZM155.448 87.602C168.429 79.0765 177 64.3908 177 47.7041C177 21.3578 155.635 0 129.279 0H96.3088H88.5H80.6912H47.7206C21.3652 0 0 21.3578 0 47.7041C0 64.3908 8.57068 79.0765 21.5515 87.602C8.57068 96.1276 0 110.813 0 127.5C0 144.187 8.57067 158.872 21.5515 167.398C8.57067 175.923 0 190.609 0 207.296C0 233.697 21.6358 255 47.9363 255C74.4764 255 96.3088 233.503 96.3088 206.862V175.204V167.398V162.796C104.785 170.505 116.05 175.204 128.412 175.204H129.279C155.635 175.204 177 153.846 177 127.5C177 110.813 168.429 96.1276 155.448 87.602ZM129.279 95.4082L128.412 95.4082C110.682 95.4082 96.3088 109.776 96.3088 127.5C96.3088 145.224 110.682 159.592 128.412 159.592H129.279C147.009 159.592 161.382 145.224 161.382 127.5C161.382 109.776 147.009 95.4082 129.279 95.4082ZM15.6176 207.296C15.6176 189.572 29.9906 175.204 47.7206 175.204H80.6912V206.862C80.6912 224.771 65.9608 239.388 47.9363 239.388C30.1515 239.388 15.6176 224.965 15.6176 207.296ZM80.6912 79.7959H47.7206C29.9906 79.7959 15.6176 65.4279 15.6176 47.7041C15.6176 29.9802 29.9906 15.6122 47.7206 15.6122H80.6912V79.7959Z"
+          fill="white" />
+      </svg> -->
+      <svg width="50" height="50" viewBox="0 0 177 255" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M47.7206 95.4082C29.9906 95.4082 15.6176 109.776 15.6176 127.5C15.6176 145.224 29.9906 159.592 47.7206 159.592H80.6912V127.5V95.4082H47.7206ZM128.412 79.7959L129.279 79.7959C147.009 79.7959 161.382 65.4279 161.382 47.7041C161.382 29.9802 147.009 15.6122 129.279 15.6122H96.3088V79.7959L128.412 79.7959ZM155.448 87.602C168.429 79.0765 177 64.3908 177 47.7041C177 21.3578 155.635 0 129.279 0H96.3088H88.5H80.6912H47.7206C21.3652 0 0 21.3578 0 47.7041C0 64.3908 8.57068 79.0765 21.5515 87.602C8.57068 96.1276 0 110.813 0 127.5C0 144.187 8.57067 158.872 21.5515 167.398C8.57067 175.923 0 190.609 0 207.296C0 233.697 21.6358 255 47.9363 255C74.4764 255 96.3088 233.503 96.3088 206.862V175.204V167.398V162.796C104.785 170.505 116.05 175.204 128.412 175.204H129.279C155.635 175.204 177 153.846 177 127.5C177 110.813 168.429 96.1276 155.448 87.602ZM129.279 95.4082L128.412 95.4082C110.682 95.4082 96.3088 109.776 96.3088 127.5C96.3088 145.224 110.682 159.592 128.412 159.592H129.279C147.009 159.592 161.382 145.224 161.382 127.5C161.382 109.776 147.009 95.4082 129.279 95.4082ZM15.6176 207.296C15.6176 189.572 29.9906 175.204 47.7206 175.204H80.6912V206.862C80.6912 224.771 65.9608 239.388 47.9363 239.388C30.1515 239.388 15.6176 224.965 15.6176 207.296ZM80.6912 79.7959H47.7206C29.9906 79.7959 15.6176 65.4279 15.6176 47.7041C15.6176 29.9802 29.9906 15.6122 47.7206 15.6122H80.6912V79.7959Z"
+          fill="#2F8FCE" />
       </svg>
-       -->
-      <svg width="70" height="70" viewBox="0 0 341 633" fill="none" xmlns="http://www.w3.org/2000/svg" class="">
-        <path
-          d="M1.57031 451.586C10.5547 446.117 18.237 440.388 24.6172 434.398C31.1276 428.409 36.4661 421.768 40.6328 414.477C44.7995 407.315 47.8594 399.307 49.8125 390.453C51.7656 381.469 52.7422 371.312 52.7422 359.984V95.7266H114.656V348.852C114.656 362.393 114.07 374.763 112.898 385.961C111.727 397.029 109.773 407.185 107.039 416.43C104.435 425.805 100.854 434.398 96.2969 442.211C91.8698 450.023 86.3359 457.445 79.6953 464.477C73.1849 471.508 65.4375 478.279 56.4531 484.789C47.599 491.299 37.3125 497.875 25.5938 504.516L1.57031 451.586Z"
-          fill="white" fill-opacity="0.5"></path>
-        <path
-          d="M99.5703 506.586C108.555 501.117 116.237 495.388 122.617 489.398C129.128 483.409 134.466 476.768 138.633 469.477C142.799 462.315 145.859 454.307 147.812 445.453C149.766 436.469 150.742 426.312 150.742 414.984V150.727H212.656V403.852C212.656 417.393 212.07 429.763 210.898 440.961C209.727 452.029 207.773 462.185 205.039 471.43C202.435 480.805 198.854 489.398 194.297 497.211C189.87 505.023 184.336 512.445 177.695 519.477C171.185 526.508 163.438 533.279 154.453 539.789C145.599 546.299 135.312 552.875 123.594 559.516L99.5703 506.586Z"
-          fill="url(#paint0_linear_102_2)" fill-opacity="0.5"></path>
-        <path d="M340 555L305 498V632.5L340 555Z" stroke="black"></path>
-        <rect width="48.7" height="61" transform="translate(4 96)" fill="white" fill-opacity="0.5"
-          class="  bg-gradient-to-l from-[#1595b6] to-[#1f2667e6]"></rect>
-        <rect x="4" y="63" width="49" height="33" fill="white" fill-opacity="0.8"></rect>
-        <g filter="url(#filter0_d_102_2)">
-          <rect width="209" height="63" transform="translate(4)" fill="#007B99" fill-opacity="0.8"
-            class="bg-[#4595eb] bg-gradient-to-l from-[#1595b6] to-[#1f2667e6]"></rect>
-        </g>
-        <g filter="url(#filter1_d_102_2)">
-          <rect width="62" height="33" transform="translate(151 63)" fill="#007B99" fill-opacity="0.8"
-            class="bg-[#4595eb] bg-gradient-to-l from-[#1595b6] to-[#1f2667e6]"></rect>
-        </g>
-        <defs>
-          <filter id="filter0_d_102_2" x="0" y="0" width="217" height="71" filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB" class=" bg-[#4595eb] bg-gradient-to-l from-[#1595b6] to-[#1f2667e6]>
-                <feFlood flood-opacity=" 0" result="BackgroundImageFix">
-            </feFlood>
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"></feColorMatrix>
-            <feOffset dy="4"></feOffset>
-            <feGaussianBlur stdDeviation="2"></feGaussianBlur>
-            <feComposite in2="hardAlpha" operator="out"></feComposite>
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_102_2"></feBlend>
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_102_2" result="shape"></feBlend>
-          </filter>
-          <filter id="filter1_d_102_2" x="147" y="63" width="70" height="41" filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB" class="bg-gradient-to-l from-[#1595b6] to-[#1f2667e6]>
-                <feFlood flood-opacity=" 0" result="BackgroundImageFix">
-            </feFlood>
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-              result="hardAlpha"></feColorMatrix>
-            <feOffset dy="4"></feOffset>
-            <feGaussianBlur stdDeviation="2"></feGaussianBlur>
-            <feComposite in2="hardAlpha" operator="out"></feComposite>
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_102_2"></feBlend>
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_102_2" result="shape"></feBlend>
-          </filter>
-          <linearGradient id="paint0_linear_102_2" x1="174" y1="80" x2="178" y2="388.5" gradientUnits="userSpaceOnUse"
-            class="bg-gradient-to-l from-[#1595b6] to-[#1f2667e6]>
-                <stop stop-color=" #0089AB">
-            </stop>
-            <stop offset="0.16" stop-color="#1595B6"></stop>
-            <stop offset="0.365" stop-color="#1595B6"></stop>
-            <stop offset="0.54" stop-color="#1595B6"></stop>
-            <stop offset="1" stop-color="#1595B6""></stop>
-            </linearGradient>
-        </defs>
-    </svg>
-      <div class=" flex gap-4 pointer-events-auto">
-              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-sun">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-              </svg> -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-              </svg>
-              <a href="tel:6354880447"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" class="feather feather-phone">
-                  <path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                  </path>
-                </svg></a>
-              <!-- <a href="https://wa.me/6354880447?text=Hi, How are you?" target="_blank">
-                <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="whatsapp"
-                  class="svg-inline--fa fa-whatsapp fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" width="24"
-                  height="24" viewBox="0 0 448 512">
-                  <path fill="currentColor"
-                    d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z">
-                  </path>
-                </svg>
-              </a> -->
-              </div>
+
+
+
+      <div class=" flex gap-4 pointer-events-auto text-[#b0b2c3]">
+
+        <!-- Theme Toggle Button -->
+        <button id="themeToggle"
+          class="p-2  hover:bg-white/10 rounded-full transition-colors duration-200 focus:outline-none text-[#ff5733]"
+          aria-label="Toggle dark/light theme">
+          <!-- Sun icon for dark mode -->
+          <svg id="sunIcon" class="w-6 h-6" style="color: var(--text-primary);" xmlns="http://www.w3.org/2000/svg"
+            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <!-- Moon icon for light mode -->
+          <svg id="moonIcon" class="w-6 h-6 hidden" style="color: var(--text-primary);"
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+      </div>
     </header>
     <div class="absolute inset-0 hidden md:block" id="wrapper-canvas"></div>
     <div class="flex -mt-10 relative">
       <div class="w-full px-4 max-w-screen-xl mx-auto">
-        <!-- <svg viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg"
-          class="pointer-events-none absolute top-0 left-1/2 -translate-y-[80px] sm:-translate-y-[180px] -translate-x-1/2 w-[300px] sm:w-[400px] md:w-[650px]">
-          <path
-            d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109"
-            stroke="#1F2667" stroke-opacity="0.9" stroke-width="10" />
-          <path
-            d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109"
-            stroke="url(#paint0_linear)" stroke-width="10" />
-          <defs>
-            <linearGradient id="paint0_linear" x1="205.549" y1="20.0169" x2="204.338" y2="342.461"
-              gradientUnits="userSpaceOnUse">
-              <stop stop-color="#1595B6" />
-              <stop offset="1" stop-color="#1595B6" stop-opacity="0" />
-            </linearGradient>
-          </defs>
-        </svg> -->
+
         <svg viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg"
           class="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2    -translate-y-[80px] w-[300px] sm:w-[400px] md:w-[450px]">
           <defs>
@@ -181,14 +235,16 @@
             stroke="url(#paint0_linear)" stroke-opacity="0" stroke-width="10" />
         </svg>
         <div class="relative ml-4 md:ml-12">
-          <h1 class="pointer-events-none text-4xl md:text-[64px] font-['Spartan'] mr-12">
+          <h1 class="pointer-events-none text-4xl md:text-[70px]  mr-12"
+            style="color: var(--text-primary);">
             Jay Patel
           </h1>
-          <p class="pointer-events-none font-['Merriweather'] italic my-4 md:my-8">
+          <p class="pointer-events-none   my-4 md:my-8"
+            style="color: var(--text-secondary);">
             MERN Stack Developer
           </p>
-          <button id="aboutMeBtn"
-            class="bg-[#4595eb] py-2 px-5 rounded font-extrabold bg-gradient-to-l from-[#1595b6] to-[#1f2667e6] relative hover:scale-110 ease-in-out duration-100 group">
+          <button id="aboutMeBtn" class="py-2 px-5 rounded-lg  font-medium relative hover:opacity-90 ease-in-out duration-200 group"
+            style="background: linear-gradient(to left, var(--accent-primary), var(--accent-secondary)); color:white;">
             About Me
 
             <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
@@ -196,7 +252,7 @@
               xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
               xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px" width="44"
               height="44" viewBox="0 0 100 100"
-              class="absolute top-1/2 -translate-y-1/2 -right-7 group-hover:-right-8 ease-in-out duration-100">
+              class="absolute top-1/2 -translate-y-1/2 -right-8 group-hover:-right-10 ease-in-out duration-100">
               <g transform="translate(0,-952.36218)">
                 <path style="
                       text-indent: 0;
@@ -207,7 +263,7 @@
                       enable-background: accumulate;
                     "
                   d="m 88.999835,1002.3621 c 0,-0.4628 -0.2799,-1.0773 -0.5639,-1.3755 l -15.9997,-17.00026 c -0.747,-0.7723 -1.9572,-0.8618 -2.8281,-0.078 -0.7786,0.7007 -0.798,2.0673 -0.078,2.8282 l 12.8435,13.62516 -69.37347,0 c -1.1046,0 -2,0.8954 -2,2 0,1.1046 0.8954,2.0001 2,2.0001 l 69.37347,0 -12.8435,13.6252 c -0.7199,0.7608 -0.6688,2.0938 0.078,2.8281 0.7885,0.7752 2.0925,0.7062 2.8281,-0.078 l 15.9997,-17.0002 c 0.4701,-0.4611 0.556,-0.9052 0.5639,-1.3748 z"
-                  fill="#fff" fill-opacity="1" stroke="white" stroke-width="2" marker="none" visibility="visible"
+                  fill="#fff" fill-opacity="1" stroke="skyblue" stroke-width="2" marker="none" visibility="visible"
                   display="inline" overflow="visible" />
               </g>
             </svg>
@@ -215,10 +271,10 @@
         </div>
       </div>
 
-      <ul class="ml-auto space-y-6 text-[#b0b2c3] absolute right-8">
+      <ul class="ml-auto space-y-8 text-[#b0b2c3]  right-8 fixed">
         <li>
           <a href="https://www.linkedin.com/in/jay-patel-19857b102/" target="_blank">
-            <svg class="w-7 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <svg class="w-6 hover:text-gray-500/50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <path fill="currentColor"
                 d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
             </svg>
@@ -226,7 +282,7 @@
         </li>
         <li>
           <a href="https://x.com/joy_3405" target="_blank">
-            <svg class="w-7 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <svg class="w-6 hover:text-gray-500/50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <path fill="currentColor"
                 d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
             </svg>
@@ -234,7 +290,7 @@
         </li>
         <li>
           <a href="https://www.instagram.com/jayptl_34/" target="_blank">
-            <svg class="w-7 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <svg class="w-6 hover:text-gray-500/50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <path fill="currentColor"
                 d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
             </svg>
@@ -242,7 +298,7 @@
         </li>
         <li>
           <a href="mailto:Pj409402@gmail.com" target="_blank">
-            <svg class="w-7 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <svg class="w-6 hover:text-gray-500/50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <path fill="currentColor"
                 d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z" />
             </svg>
@@ -250,7 +306,7 @@
         </li>
         <li>
           <a href="https://www.youtube.com/@JayPatel_34" target="_blank">
-            <svg class="w-7 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+            <svg class="w-6 hover:text-gray-500/50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
               fill="currentColor">
               <path
                 d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z" />
@@ -260,9 +316,9 @@
       </ul>
     </div>
     <div
-      class="relative self-center after:content-[''] after:absolute after:w-[2px] after:h-5 after:bg-[#444] after:left-1/2 after:-translate-x-1/2 after:top-[100px]">
+      class="relative self-center after:content-[''] after:absolute after:w-[2px] after:h-5 after:bg-[#1888AE] after:left-1/2 after:-translate-x-1/2 after:top-[100px]">
       <button id="latestWorkBtn"
-        class="bg-[#4595eb] py-2 px-5 rounded font-extrabold bg-gradient-to-l from-[#1595b6] to-[#1f2667e6]  relative hover:scale-110 ease-in-out duration-100 group mb-20">
+        class="bg-[#1788ae] py-2 px-5 rounded-lg  text-white  bg-gradient-to-l from-[#1788ae] to-[#83aaf3e6]  relative hover:opacity-90 ease-out duration-200 group mb-20">
         Latest Works
 
         <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
@@ -270,7 +326,7 @@
           xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
           xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px" width="44"
           height="44" viewBox="0 0 100 100"
-          class="absolute rotate-90 left-1/2 -translate-x-1/2 top-11 group-hover:top-12 ease-in-out duration-100">
+          class="absolute rotate-90 left-1/2 -translate-x-1/2 top-8 group-hover:top-9 ease-in-out duration-600">
           <g transform="translate(0,-952.36218)">
             <path style="
                   text-indent: 0;
@@ -281,7 +337,7 @@
                   enable-background: accumulate;
                 "
               d="m 88.999835,1002.3621 c 0,-0.4628 -0.2799,-1.0773 -0.5639,-1.3755 l -15.9997,-17.00026 c -0.747,-0.7723 -1.9572,-0.8618 -2.8281,-0.078 -0.7786,0.7007 -0.798,2.0673 -0.078,2.8282 l 12.8435,13.62516 -69.37347,0 c -1.1046,0 -2,0.8954 -2,2 0,1.1046 0.8954,2.0001 2,2.0001 l 69.37347,0 -12.8435,13.6252 c -0.7199,0.7608 -0.6688,2.0938 0.078,2.8281 0.7885,0.7752 2.0925,0.7062 2.8281,-0.078 l 15.9997,-17.0002 c 0.4701,-0.4611 0.556,-0.9052 0.5639,-1.3748 z"
-              fill="#fff" fill-opacity="1" stroke="white" stroke-width="2" marker="none" visibility="visible"
+              fill="#fff" fill-opacity="1" stroke="skyblue" stroke-width="2" marker="none" visibility="visible"
               display="inline" overflow="visible" />
           </g>
         </svg>
@@ -291,20 +347,24 @@
   <div>
     <section id="work" class="max-w-screen-xl mx-auto px-4 relative pb-8 sm:pb-16">
       <h2 id="latest-work"
-        class="text-3xl sm:text-[40px] bg-[#111] relative z-10 font-bold px-4 py-2 w-max mx-auto text-center text-[white] sm:border-b-2 border-[#1788ae]">
+        class="text-3xl sm:text-[40px] relative z-10 font-bold px-4 py-2 w-max mx-auto text-center sm:border-b-2 "
+        style="background-color: var(--bg-primary); color: var(--text-primary); border-color: var(--accent-primary); ">
         Latest Works
       </h2>
       <div class="flex flex-col sm:flex-row gap-4 mt-8 sm:gap-[80px] items-center sm:mt-20 relative">
-        <div class="h-[1px] left-1/4 right-1/2 bg-[#1788ae] absolute top-1/2 hidden sm:block"></div>
+        <div class="h-[1px] left-1/4 right-1/2 absolute top-1/2 hidden sm:block"
+          style="background-color: var(--accent-primary);"></div>
         <div
-          class="w-4 h-4 rounded-full border-[3px] border-[#459bd5] absolute left-1/2 -translate-x-1/2 bg-[#111] z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block">
+          class="w-4 h-4 rounded-full border-[3px] absolute left-1/2 -translate-x-1/2 z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block"
+          style="border-color: var(--accent-secondary); background-color: var(--bg-primary);">
         </div>
         <a href="#" class="flex w-full relative justify-center sm:justify-start">
           <div class="flex flex-col items-center relative group sm:hover:scale-105 ease-in-out duration-200">
             <img class="max-w-[400px] w-full mr-auto relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
-              src="./assets/images/cryptovault.webp" alt="" />
+              src="./assets/images/PromptX.webp" alt="" />
             <span
-              class="flex group-hover:-top-14 ease-jump duration-200 bg-[#459bd5] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">CryptoVault
+              class="flex group-hover:-top-14 ease-jump duration-200 sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-2 after:h-2 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2"
+              style="background-color: var(--accent-secondary); color: var(--text-primary);">PromptX
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-external-link">
@@ -317,11 +377,57 @@
         </a>
 
         <div class="w-full">
-          <h3 class="text-[#459bd5] font-bold text-2xl md:text-4xl">
+          <h3 class=" text-2xl md:text-3xl" style="color: var(--accent-secondary);">
+            PromptX
+          </h3>
+          <span class="text-base md:text-md" style="color: var(--accent-secondary);"> (Productivity / AI Tool)
+          </span>
+          <p class="text-justify text-sm md:text-base mt-2" style="color: var(--text-primary);">
+            Independently developed PromptX, an AI-powered prompt management platform designed to optimize prompt
+            creation,
+            organization, and testing. Implemented a user-friendly interface with clean UI/UX, real-time collaboration
+            features,
+            and efficient search capabilities. Integrated modern technologies, ensuring smooth performance, scalability,
+            and an intuitive user experience.
+          </p>
+
+          <ul class="flex flex-wrap gap-2 mt-2">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #next.js
+            </li>
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #react
+            </li>
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #tailwindcss
+            </li>
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #javascript
+            </li>
+            <li class="border rounded-[50px] py-[5px] px-2 text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #groqai
+            </li>
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #mongodb
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative">
+        <div class="order-2 sm:order-1 w-full">
+          <h3 class=" text-2xl md:text-3xl" style="color: var(--accent-tertiary);">
             Crypto Vault
           </h3>
-          <span class="text-[#459bd5] text-base md:text-lg">(Secure Decentralized File Storage)</span>
-          <p class="text-justify text-sm md:text-base mt-2">
+          <span class="text-base md:text-md" style="color: var(--accent-tertiary);">(Secure Decentralized File
+            Storage)</span>
+          <p class="text-justify text-sm md:text-base mt-2" style="color: var(--text-primary);">
             Crypto Vault is a decentralized vault for securely storing and retrieving encrypted files using blockchain
             and
             IPFS. Built the entire platform from scratch, including smart contract integration, user authentication, and
@@ -330,91 +436,201 @@
           </p>
 
           <ul class="flex flex-wrap gap-2 mt-2">
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #react.js
             </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #express.js
             </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #node.js
             </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #solidity
             </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #mongoDB
             </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #mongoose
             </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #css
             </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #javascript
             </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #metamask
             </li>
           </ul>
         </div>
-      </div>
-
-      <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative">
-        <div class="order-2 sm:order-1 w-full">
-          <h3 class="text-[#ffe578] font-bold text-2xl md:text-4xl">
-            Portfolio Website
-          </h3>
-          <span class="text-[#ffe578] text-base md:text-lg">(Personal Project)</span>
-          <p class="text-justify text-sm md:text-base mt-2">
-            Being the sole developer, designed and built a fully responsive and visually appealing portfolio website to
-            showcase my skills and projects. Focused on clean UI/UX, smooth animations, and mobile-first design.
-            Integrated modern front-end tools, animation libraries, and custom components for a seamless user
-            experience.
-
-          </p>
-
-          <ul class="flex flex-wrap gap-2 mt-2">
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-              #react.js
-            </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-              #tailwindcss
-            </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-              #framer-motion
-            </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-              #metter.js
-            </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-              #responsive-design
-            </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-              #html
-            </li>
-            <!-- <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            
-          </li> -->
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-              #javascript
-            </li>
-            <!-- <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            
-          </li> -->
-          </ul>
-        </div>
-        <div class="h-[1px] left-1/2 right-1/4 bg-[#1788ae] absolute top-1/2 hidden sm:block"></div>
+        <div class="h-[1px] left-1/2 right-1/4 absolute top-1/2 hidden sm:block"
+          style="background-color: var(--accent-tertiary);"></div>
         <div
-          class="w-4 h-4 rounded-full border-[3px] border-[#ffe578] absolute left-1/2 -translate-x-1/2 bg-[#111] z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block">
+          class="w-4 h-4 rounded-full border-[3px] absolute left-1/2 -translate-x-1/2 z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block"
+          style="border-color: var(--accent-tertiary); background-color: var(--bg-primary);">
         </div>
         <a href="#" class="order-1 sm:order-2 flex w-full relative justify-center sm:justify-start">
           <div class="flex flex-col items-center relative group sm:hover:scale-105 ease-in-out duration-200 sm:ml-auto">
             <img class="max-w-[400px] w-full relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
-              src="./assets/images/portfolioimage.webp" alt="" />
+              src="./assets/images/cryptovault.webp" alt="PromptX project preview" />
             <span
-              class="flex group-hover:-top-14 ease-jump duration-200 text-black bg-[#ffe578] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">
+              class="flex group-hover:-top-14 ease-jump duration-200 sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2"
+              style="color: var(--text-primary); background-color: var(--accent-tertiary);">
+              Crypto Vault
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-external-link">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative">
+        <div class="h-[1px] left-1/4 right-1/2 absolute top-1/2 hidden sm:block"
+          style="background-color: var(--accent-primary);"></div>
+        <div
+          class="w-4 h-4 rounded-full border-[3px] absolute left-1/2 -translate-x-1/2 z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block"
+          style="border-color: var(--accent-secondary); background-color: var(--bg-primary);">
+        </div>
+        <a href="#" class="flex w-full relative justify-center sm:justify-start">
+          <div class="flex flex-col items-center relative group hover:scale-105 ease-in-out sm:mr-auto duration-200">
+            <img class="max-w-[400px] w-full mr-auto relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
+              src="./assets/images/netflix.webp" alt="" />
+            <span
+              class="flex group-hover:-top-14 ease-jump duration-200 sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2"
+              style="background-color: var(--accent-secondary); color: var(--text-primary);">Netflix Clone
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-external-link">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <div class="w-full">
+          <h3 class="text-2xl md:text-3xl" style="color: var(--accent-secondary);">
+            CineStream – Netflix Clone
+          </h3>
+          <span class="text-base md:text-md" style="color: var(--accent-secondary);">(Entertainment Web
+            Application)</span>
+          <p class="text-justify text-sm md:text-base mt-2" style="color: var(--text-primary);">
+            Developed a full-featured Netflix-inspired web application offering seamless video browsing, dynamic content
+            display, and user authentication. Implemented a responsive, visually appealing UI with React.js and
+            integrated backend APIs using Node.js and Express.js. Utilized MongoDB for managing user data, watchlists,
+            and media content, ensuring a smooth, real-time experience. Focused on scalability, clean code structure,
+            and an engaging user experience.
+          </p>
+
+          <ul class="flex flex-wrap gap-2 mt-2">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #react.js
+            </li>
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #express.js
+            </li>
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #node.js
+            </li>
+            <!-- <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            #swiper.js
+          </li> -->
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #mongoDB
+            </li>
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #mongoose
+            </li>
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #css
+            </li>
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #javascript
+            </li>
+            <!-- <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            #figma
+          </li> -->
+          </ul>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative">
+        <div class="order-2 sm:order-1 w-full">
+          <h3 class=" text-2xl md:text-3xl" style="color: var(--accent-tertiary);">
+            Portfolio Website
+          </h3>
+          <span class="text-base md:text-md" style="color: var(--accent-tertiary);">(Personal / Professional
+            Showcase)</span>
+          <p class="text-justify text-sm md:text-base mt-2" style="color: var(--text-primary);">
+            Being the sole developer, designed and built a fully responsive and visually appealing portfolio website to
+            showcase skills, projects, and achievements. Focused on a clean UI/UX, smooth animations, and mobile-first
+            design. Integrated modern front-end tools, animation libraries, and custom components for a seamless and
+            engaging user experience.
+          </p>
+
+          <ul class="flex flex-wrap gap-2 mt-2">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #CSS
+            </li>
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #react
+            </li>
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #tailwindcss
+            </li>
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #javascript
+            </li>
+            <li class="border rounded-[50px] py-[5px] px-2 text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #framer-motion
+            </li>
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #Figma
+            </li>
+          </ul>
+        </div>
+        <div class="h-[1px] left-1/2 right-1/4 absolute top-1/2 hidden sm:block"
+          style="background-color: var(--accent-tertiary);"></div>
+        <div
+          class="w-4 h-4 rounded-full border-[3px] absolute left-1/2 -translate-x-1/2 z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block"
+          style="border-color: var(--accent-tertiary); background-color: var(--bg-primary);">
+        </div>
+        <a href="#" class="order-1 sm:order-2 flex w-full relative justify-center sm:justify-start">
+          <div class="flex flex-col items-center relative group sm:hover:scale-105 ease-in-out duration-200 sm:ml-auto">
+            <img class="max-w-[400px] w-full relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
+              src="./assets/images/Myportfolio.webp" alt="PromptX project preview" />
+            <span
+              class="flex group-hover:-top-14 ease-jump duration-200 sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2"
+              style="color: var(--text-primary); background-color: var(--accent-tertiary);">
               Portfolio
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -428,16 +644,19 @@
         </a>
       </div>
       <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative">
-        <div class="h-[1px] left-1/4 right-1/2 bg-[#1788ae] absolute top-1/2 hidden sm:block"></div>
+        <div class="h-[1px] left-1/4 right-1/2 absolute top-1/2 hidden sm:block"
+          style="background-color: var(--accent-primary);"></div>
         <div
-          class="w-4 h-4 rounded-full border-[3px] border-[#fc815c] absolute left-1/2 -translate-x-1/2 bg-[#111] z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block">
+          class="w-4 h-4 rounded-full border-[3px] absolute left-1/2 -translate-x-1/2 z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block"
+          style="border-color: var(--accent-secondary); background-color: var(--bg-primary);">
         </div>
         <a href="#" class="flex w-full relative justify-center sm:justify-start">
           <div class="flex flex-col items-center relative group hover:scale-105 ease-in-out sm:mr-auto duration-200">
             <img class="max-w-[400px] w-full mr-auto relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
               src="./assets/images/jay.webp" alt="" />
             <span
-              class="flex group-hover:-top-14 ease-jump duration-200 bg-[#fc815c] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">Cvm_Gcet
+              class="flex group-hover:-top-14 ease-jump duration-200 sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2"
+              style="background-color: var(--accent-secondary); color: var(--text-primary);">Cvm_Gcet
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-external-link">
@@ -450,11 +669,11 @@
         </a>
 
         <div class="w-full">
-          <h3 class="text-[#fc815c] font-bold text-2xl md:text-4xl">
-            CVM GCET Website
+          <h3 class=" text-md md:text-3xl" style="color: var(--accent-secondary);">
+            CVM Website
           </h3>
-          <span class="text-[#fc815c] text-base md:text-lg">(Community Project)</span>
-          <p class="text-justify text-sm md:text-base mt-2">
+          <span class="text-base md:text-md" style="color: var(--accent-secondary);">(Community Project)</span>
+          <p class="text-justify text-sm md:text-base mt-2" style="color: var(--text-primary);">
             Being the lead developer, developed a fast, responsive, and informative website for GCET under the CVM
             group.
             Focused on a clean, professional interface and accessible design. Worked closely with the design team to
@@ -462,28 +681,35 @@
           </p>
 
           <ul class="flex flex-wrap gap-2 mt-2">
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #react.js
             </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #express.js
             </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #node.js
             </li>
             <!-- <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
             #swiper.js
           </li> -->
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #mongoDB
             </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #mongoose
             </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #css
             </li>
-            <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
+            <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
               #javascript
             </li>
             <!-- <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
@@ -492,338 +718,111 @@
           </ul>
         </div>
       </div>
-      <!-- <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative">
-      <div class="order-2 sm:order-1 w-full">
-        <h3 class="text-[#47afa1] font-bold text-2xl md:text-4xl">
-          Web Dev English
-        </h3>
-        <span class="text-[#47afa1] text-base md:text-lg">(Coaching and Consulting)</span>
-        <p class="text-justify text-sm md:text-base mt-2">
-          Being a lead developer, revamped the site to a highly responsive,
-          and interactive website. Created new features and pages. Worked as a
-          team with product manager and ux designer.
-        </p>
 
-        <ul class="flex flex-wrap gap-2 mt-2">
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #react.js
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #express.js
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #node.js
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #swiper.js
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #mongoDB
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #mongoose
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #css
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #javascript
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #figma
-          </li>
-        </ul>
-      </div>
-      <div class="h-[1px] left-1/2 right-1/4 bg-[#1788ae] absolute top-1/2 hidden sm:block"></div>
-      <div
-        class="w-4 h-4 rounded-full border-[3px] border-[#47afa1] absolute left-1/2 -translate-x-1/2 bg-[#111] z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block">
-      </div>
-      <a href="#" class="order-1 sm:order-2 flex w-full relative justify-center sm:justify-start">
-        <div class="flex flex-col items-center relative group sm:hover:scale-105 ease-in-out duration-200 sm:ml-auto">
-          <img class="max-w-[400px] w-full relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
-            src="./assets/images/web-dev-english.webp" alt="" />
-          <span
-            class="flex group-hover:-top-14 ease-jump duration-200 bg-[#47afa1] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">Web
-            Dev English
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="feather feather-external-link">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-          </span>
-        </div>
-      </a>
-    </div>
-    <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative">
-      <div class="h-[1px] left-1/4 right-1/2 bg-[#1788ae] absolute top-1/2 hidden sm:block"></div>
-      <div
-        class="w-4 h-4 rounded-full border-[3px] border-[#fc815c] absolute left-1/2 -translate-x-1/2 bg-[#111] z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block">
-      </div>
-      <a href="#" class="flex w-full relative justify-center sm:justify-start">
-        <div class="flex flex-col items-center relative group hover:scale-105 ease-in-out sm:mr-auto duration-200">
-          <img class="max-w-[400px] w-full mr-auto relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
-            src="./assets/images/pioneer-digital.webp" alt="" />
-          <span
-            class="flex group-hover:-top-14 ease-jump duration-200 bg-[#fc815c] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">Pioneer
-            Digital
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="feather feather-external-link">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-          </span>
-        </div>
-      </a>
-
-      <div class="w-full">
-        <h3 class="text-[#fc815c] font-bold text-2xl md:text-4xl">
-          Pioneer Digital
-        </h3>
-        <span class="text-[#fc815c] text-base md:text-lg">(Digital Marketing Agency)</span>
-        <p class="text-justify text-sm md:text-base mt-2">
-          One of the featured site while working with TheBrandWick.com
-          (agency). Worked as a frontend developer to make the site
-          user-interactive and responsive.
-        </p>
-
-        <ul class="flex flex-wrap gap-2 mt-2">
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #react.js
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #express.js
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #node.js
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #swiper.js
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #mongoDB
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #mongoose
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #css
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #javascript
-          </li>
-          <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #figma
-          </li>
-        </ul>
-      </div>
-    </div> -->
       <div class="w-[2px] hidden sm:block bg-[#1788ae] absolute top-0 bottom-0 left-1/2 -translate-x-1/2"></div>
     </section>
-    <!-- <section class="max-w-screen-xl mx-auto pb-12">
-    <h2
-      class="text-3xl sm:text-[40px] bg-[#111] sm:w-max relative z-10 font-bold px-4 py-2 mx-auto text-center text-[#1788ae] sm:border-2 border-[#1788ae] rounded-md">
-      What my clients are saying?
-    </h2>
-    <div class="swiper mySwiper !py-14">
-      <div class="swiper-wrapper items-center">
-        <div class="swiper-slide px-4">
-          <div
-            class="flex flex-col md:flex-row w-full md:max-w-[800px] items-center rounded-lg p-9 shadow-[0_0px_50px_rgba(59,130,246,0.6)] cursor-grab">
-            <img
-              class="shrink-0 w-[120px] h-[120px] md:w-[180px] md:h-[180px] rounded-full drop-shadow-[0_0px_80px_rgba(59,130,246,1)]"
-              src="/assets/images/saatvik.webp" alt="testimonial 3" />
-            <div class="testimonial-text ml-6 text-left pt-6 md:pt-16 relative">
-              <p class="text-sm md:text-base mb-2">
-                “Anurag is a talented, committed individual who will leave no
-                stone unturned in his pursuit to provide with the best. His
-                attention to detail and in-depth experience in the of web
-                development is indeed commendable. He has exhibited exemplary
-                skills in the field, and I hope to see all the great projects
-                coming up!”
-              </p>
-              <h2 class="text-right text-[#459bd5] font-bold text-2xl md:text-4xl">
-                Saatvik Nagpal
-              </h2>
-              <h5 class="text-right text-[#459bd5] text-base md:text-lg">
-                Founder, EazyGrad
-              </h5>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide px-4">
-          <div
-            class="flex flex-col md:flex-row max-w-[800px] items-center rounded-lg p-9 shadow-[0_0px_50px_rgba(59,130,246,0.6)] cursor-grab">
-            <img
-              class="shrink-0 w-[120px] h-[120px] md:w-[180px] md:h-[180px] rounded-full drop-shadow-[0_0px_80px_rgba(59,130,246,1)]"
-              src="/assets/images/kira.webp" alt="testimonial 3" />
-            <div class="testimonial-text ml-6 text-left pt-6 md:pt-16 relative">
-              <p class="text-sm md:text-base mb-2">
-                “Anurag was a wonderful developer to work with! He anticipated
-                everything I need to consider for my website. He also went the
-                extra mile and added details that I hadn't considered! He is
-                helping my business grow, and I will definitely work with him
-                again!”
-              </p>
-              <h2 class="text-right text-[#459bd5] font-bold text-2xl md:text-4xl">
-                Kira Bragg
-              </h2>
-              <h5 class="text-right text-[#459bd5] text-base md:text-lg">
-                English Mentor
-              </h5>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide px-4">
-          <div
-            class="flex flex-col md:flex-row max-w-[800px] items-center rounded-lg p-9 shadow-[0_0px_50px_rgba(59,130,246,0.6)] cursor-grab">
-            <img
-              class="shrink-0 w-[120px] h-[120px] md:w-[180px] md:h-[180px] rounded-full drop-shadow-[0_0px_80px_rgba(59,130,246,1)]"
-              src="/assets/images/Srihari.webp" alt="testimonial 3" />
-            <div class="testimonial-text ml-6 text-left pt-6 md:pt-16 relative">
-              <p class="text-sm md:text-base mb-2">
-                “I worked with Anurag to make my website. I am speechless by
-                looking at his work ethic and dedication. Working with him was
-                the best decision I made.”
-              </p>
-              <h2 class="text-right text-[#459bd5] font-bold text-2xl md:text-4xl">
-                Srihari Kestur
-              </h2>
-              <h5 class="text-right text-[#459bd5] text-base md:text-lg">
-                Founder Harigurus
-              </h5>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </section> -->
+
 
     <section class="max-w-screen-xl mx-auto px-4 pb-12">
       <h2
-        class="text-3xl sm:text-[40px] bg-[#111] relative z-10 font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae] sm:border-2 border-[#1788ae] rounded-md">
+        class="text-3xl sm:text-[40px] relative z-10 font-bold px-4 py-2 w-max mx-auto text-center sm:border-2 rounded-md"
+        style="background-color: var(--bg-primary); color: var(--accent-primary); border-color: var(--accent-primary);">
         Let's Connect
       </h2>
       <div class="flex flex-col md:flex-row items-center mt-10">
         <div class="w-full">
           <img src="./assets/images/contact-me.svg" alt="phone" />
         </div>
-        <form class="w-full" name="contactUS" netlify>
-          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-          <div class="relative mb-4">
-            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-              <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
-              </svg>
+        <form class="w-full" name="contactUS" method="POST" netlify novalidate>
+          <fieldset>
+            <legend class="sr-only">Contact Information</legend>
+
+            <!-- Name Field -->
+            <div class="mb-4">
+              <label for="name" class="block mb-2 text-sm font-medium" style="color: var(--text-primary);">
+                Name <span class="text-red-500" aria-label="required">*</span>
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
+                  </svg>
+                </div>
+                <input type="text" id="name" name="name" required minlength="2" maxlength="100"
+                  class="border-2 outline-none text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 transition-colors duration-200"
+                  style="background-color: var(--input-bg); border-color: var(--input-border); color: var(--input-text);"
+                  placeholder="Enter your full name" aria-describedby="name-error" aria-invalid="false" />
+                <div id="name-error" class="hidden text-red-500 text-xs mt-1" role="alert"></div>
+              </div>
             </div>
-            <input type="text" id="name" name="name"
-              class="bg-gray-50 border-2 outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-              placeholder="Enter your name" />
-          </div>
-          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
-          <div class="relative mb-4">
-            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-              <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
-                <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
-                <path
-                  d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
-              </svg>
+
+            <!-- Email Field -->
+            <div class="mb-4">
+              <label for="email" class="block mb-2 text-sm font-medium" style="color: var(--text-primary);">
+                Email <span class="text-red-500" aria-label="required">*</span>
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
+                    <path
+                      d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
+                    <path
+                      d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
+                  </svg>
+                </div>
+                <input type="email" id="email" name="email" required
+                  class="border-2 outline-none text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 transition-colors duration-200"
+                  style="background-color: var(--input-bg); border-color: var(--input-border); color: var(--input-text);"
+                  placeholder="your.email@example.com" aria-describedby="email-error" aria-invalid="false" />
+                <div id="email-error" class="hidden text-red-500 text-xs mt-1" role="alert"></div>
+              </div>
             </div>
-            <input type="text" id="email" name="email"
-              class="bg-gray-50 border-2 outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-              placeholder="name@procodrr.com" />
-          </div>
-          <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Message</label>
-          <div class="relative mb-4">
-            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"></div>
-            <textarea id="message" name="message" rows="8"
-              class="bg-gray-50 border-2 outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"></textarea>
-          </div>
-          <button type="submit"
-            class="w-full text-white bg-[#1788ae] hover:bg-[#1280a4] focus:ring-4 focus:ring-[#4489a0] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">
-            Send
-          </button>
+
+            <!-- Message Field -->
+            <div class="mb-4">
+              <label for="message" class="block mb-2 text-sm font-medium" style="color: var(--text-primary);">
+                Message <span class="text-red-500" aria-label="required">*</span>
+              </label>
+              <div class="relative">
+                <textarea id="message" name="message" rows="6" required minlength="10" maxlength="1000"
+                  class="border-2 outline-none text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full p-2.5 transition-colors duration-200 resize-vertical"
+                  style="background-color: var(--input-bg); border-color: var(--input-border); color: var(--input-text);"
+                  placeholder="Tell me about your project or how I can help you..."
+                  aria-describedby="message-error message-counter" aria-invalid="false"></textarea>
+                <div id="message-error" class="hidden text-red-500 text-xs mt-1" role="alert"></div>
+                <div id="message-counter" class="text-xs text-right mt-1" style="color: var(--text-secondary);"
+                  aria-live="polite">0/1000</div>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit"
+              class="w-full text-white bg-[#1788ae] hover:bg-[#1280a4] focus:ring-4 focus:ring-[#4489a0] font-medium rounded-lg text-sm px-5 py-2.5 transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-describedby="submit-status">
+              <span class="submit-text">Send Message</span>
+              <span class="submit-loading hidden">Sending...</span>
+            </button>
+
+            <div id="submit-status" class="hidden mt-2 text-sm" role="status" aria-live="polite"></div>
+          </fieldset>
         </form>
       </div>
     </section>
     <footer class="flex flex-col items-center pb-10">
-      <p class="text-xs text-gray-300">Jay Patel © 2025</p>
+      <p class="text-xs" style="color: var(--text-secondary);">Jay Patel © 2025</p>
       <div class="black-logo my-4">
-        <!-- <svg width="50" height="50" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109"
-          stroke="#1F2667" stroke-opacity="0.9" stroke-width="16"></path>
-        <path
-          d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109"
-          stroke="url(#paint0_linear)" stroke-width="16"></path>
-        <defs>
-          <linearGradient id="paint0_linear" x1="205.549" y1="20.0169" x2="204.338" y2="342.461"
-            gradientUnits="userSpaceOnUse">
-            <stop stop-color="#1595B6"></stop>
-            <stop offset="1" stop-color="#1595B6" stop-opacity="0"></stop>
-          </linearGradient>
-        </defs>
-      </svg> -->
-        <svg width="50" height="50" viewBox="0 0 341 633" fill="none" xmlns="http://www.w3.org/2000/svg" class="">
-          <path
-            d="M1.57031 451.586C10.5547 446.117 18.237 440.388 24.6172 434.398C31.1276 428.409 36.4661 421.768 40.6328 414.477C44.7995 407.315 47.8594 399.307 49.8125 390.453C51.7656 381.469 52.7422 371.312 52.7422 359.984V95.7266H114.656V348.852C114.656 362.393 114.07 374.763 112.898 385.961C111.727 397.029 109.773 407.185 107.039 416.43C104.435 425.805 100.854 434.398 96.2969 442.211C91.8698 450.023 86.3359 457.445 79.6953 464.477C73.1849 471.508 65.4375 478.279 56.4531 484.789C47.599 491.299 37.3125 497.875 25.5938 504.516L1.57031 451.586Z"
-            fill="white" fill-opacity="0.5"></path>
-          <path
-            d="M99.5703 506.586C108.555 501.117 116.237 495.388 122.617 489.398C129.128 483.409 134.466 476.768 138.633 469.477C142.799 462.315 145.859 454.307 147.812 445.453C149.766 436.469 150.742 426.312 150.742 414.984V150.727H212.656V403.852C212.656 417.393 212.07 429.763 210.898 440.961C209.727 452.029 207.773 462.185 205.039 471.43C202.435 480.805 198.854 489.398 194.297 497.211C189.87 505.023 184.336 512.445 177.695 519.477C171.185 526.508 163.438 533.279 154.453 539.789C145.599 546.299 135.312 552.875 123.594 559.516L99.5703 506.586Z"
-            fill="url(#paint0_linear_102_2)" fill-opacity="0.5"></path>
-          <path d="M340 555L305 498V632.5L340 555Z" stroke="black"></path>
-          <rect width="48.7" height="61" transform="translate(4 96)" fill="white" fill-opacity="0.5"></rect>
-          <rect x="4" y="63" width="49" height="33" fill="white" fill-opacity="0.5"></rect>
-          <g filter="url(#filter0_d_102_2)">
-            <rect width="209" height="63" transform="translate(4)" fill="#007B99" fill-opacity="0.5"></rect>
-          </g>
-          <g filter="url(#filter1_d_102_2)">
-            <rect width="62" height="33" transform="translate(151 63)" fill="#007B99" fill-opacity="0.5"></rect>
-          </g>
-          <defs>
-            <filter id="filter0_d_102_2" x="0" y="0" width="217" height="71" filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB">
-              <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                result="hardAlpha"></feColorMatrix>
-              <feOffset dy="4"></feOffset>
-              <feGaussianBlur stdDeviation="2"></feGaussianBlur>
-              <feComposite in2="hardAlpha" operator="out"></feComposite>
-              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
-              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_102_2"></feBlend>
-              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_102_2" result="shape"></feBlend>
-            </filter>
-            <filter id="filter1_d_102_2" x="147" y="63" width="70" height="41" filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB">
-              <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                result="hardAlpha"></feColorMatrix>
-              <feOffset dy="4"></feOffset>
-              <feGaussianBlur stdDeviation="2"></feGaussianBlur>
-              <feComposite in2="hardAlpha" operator="out"></feComposite>
-              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
-              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_102_2"></feBlend>
-              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_102_2" result="shape"></feBlend>
-            </filter>
-            <linearGradient id="paint0_linear_102_2" x1="174" y1="80" x2="178" y2="388.5"
-              gradientUnits="userSpaceOnUse">
-              <stop stop-color="#0089AB"></stop>
-              <stop offset="0.16" stop-color="#0081A1"></stop>
-              <stop offset="0.365" stop-color="#007B99"></stop>
-              <stop offset="0.54" stop-color="#005E75"></stop>
-              <stop offset="1" stop-color="#003745"></stop>
-            </linearGradient>
-          </defs>
+
+        
+
+        <svg width="30" height="30" viewBox="0 0 177 255" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M47.7206 95.4082C29.9906 95.4082 15.6176 109.776 15.6176 127.5C15.6176 145.224 29.9906 159.592 47.7206 159.592H80.6912V127.5V95.4082H47.7206ZM128.412 79.7959L129.279 79.7959C147.009 79.7959 161.382 65.4279 161.382 47.7041C161.382 29.9802 147.009 15.6122 129.279 15.6122H96.3088V79.7959L128.412 79.7959ZM155.448 87.602C168.429 79.0765 177 64.3908 177 47.7041C177 21.3578 155.635 0 129.279 0H96.3088H88.5H80.6912H47.7206C21.3652 0 0 21.3578 0 47.7041C0 64.3908 8.57068 79.0765 21.5515 87.602C8.57068 96.1276 0 110.813 0 127.5C0 144.187 8.57067 158.872 21.5515 167.398C8.57067 175.923 0 190.609 0 207.296C0 233.697 21.6358 255 47.9363 255C74.4764 255 96.3088 233.503 96.3088 206.862V175.204V167.398V162.796C104.785 170.505 116.05 175.204 128.412 175.204H129.279C155.635 175.204 177 153.846 177 127.5C177 110.813 168.429 96.1276 155.448 87.602ZM129.279 95.4082L128.412 95.4082C110.682 95.4082 96.3088 109.776 96.3088 127.5C96.3088 145.224 110.682 159.592 128.412 159.592H129.279C147.009 159.592 161.382 145.224 161.382 127.5C161.382 109.776 147.009 95.4082 129.279 95.4082ZM15.6176 207.296C15.6176 189.572 29.9906 175.204 47.7206 175.204H80.6912V206.862C80.6912 224.771 65.9608 239.388 47.9363 239.388C30.1515 239.388 15.6176 224.965 15.6176 207.296ZM80.6912 79.7959H47.7206C29.9906 79.7959 15.6176 65.4279 15.6176 47.7041C15.6176 29.9802 29.9906 15.6122 47.7206 15.6122H80.6912V79.7959Z"
+            fill="#2F8FCE" />
         </svg>
+
       </div>
       <ul class="mx-auto flex items-center justify-center gap-6 text-[#b0b2c3]">
         <li>
@@ -876,57 +875,459 @@
     </footer>
   </div>
   <!-- Modal Overlay and Container -->
-  
-    <!-- About content will be loaded here -->
-    <div id="aboutContent"></div>
+
+  <!-- About content will be loaded here -->
+  <div id="aboutContent"></div>
   </div>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const button = document.querySelector('#latestWorkBtn');
-      const target = document.querySelector('#work');
+    (function () {
+      'use strict';
 
-      if (button && target) {
-        button.addEventListener('click', () => {
-          target.scrollIntoView({ behavior: 'smooth' });
-        });
+      // Configuration
+      const CONFIG = {
+        ANIMATION_DELAY: 50,
+        SCROLL_BEHAVIOR: 'smooth',
+        THEME_STORAGE_KEY: 'portfolio-theme'
+      };
+
+      // Utility functions
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
       }
-    });
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const aboutBtn = document.getElementById('aboutMeBtn');
+      function showError(message) {
+        console.error('Portfolio Error:', message);
+      }
 
-      aboutBtn.addEventListener('click', async () => {
-        // Fetch the popup HTML
-        const res = await fetch('aboutMe.html');
-        const html = await res.text();
+      // Theme management functions
+      function initializeTheme() {
+        try {
+          console.log('Initializing theme...');
+          const savedTheme = localStorage.getItem(CONFIG.THEME_STORAGE_KEY);
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        // Create a wrapper and append the popup
+          console.log('Saved theme from localStorage:', savedTheme);
+          console.log('System prefers dark:', prefersDark);
+
+          // Use saved theme or system preference, default to dark
+          const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+          console.log('Selected theme:', theme);
+          setTheme(theme);
+
+          // Listen for system theme changes
+          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem(CONFIG.THEME_STORAGE_KEY)) {
+              setTheme(e.matches ? 'dark' : 'light');
+            }
+          });
+
+        } catch (error) {
+          console.error('Failed to initialize theme:', error);
+          setTheme('dark'); // Fallback to dark theme
+        }
+      }
+
+      function setTheme(theme) {
+        try {
+          console.log('Setting theme to:', theme);
+          const root = document.documentElement;
+          const sunIcon = document.getElementById('sunIcon');
+          const moonIcon = document.getElementById('moonIcon');
+
+          console.log('Current root classes:', root.classList.toString());
+          console.log('Sun icon found:', !!sunIcon);
+          console.log('Moon icon found:', !!moonIcon);
+
+          if (theme === 'light') {
+            root.classList.remove('dark');
+            root.classList.add('light');
+            if (sunIcon) sunIcon.classList.add('hidden');
+            if (moonIcon) moonIcon.classList.remove('hidden');
+            console.log('Applied light theme classes');
+          } else {
+            root.classList.remove('light');
+            root.classList.add('dark');
+            if (sunIcon) sunIcon.classList.remove('hidden');
+            if (moonIcon) moonIcon.classList.add('hidden');
+            console.log('Applied dark theme classes');
+          }
+
+          console.log('Final root classes:', root.classList.toString());
+          localStorage.setItem(CONFIG.THEME_STORAGE_KEY, theme);
+          console.log('Theme saved to localStorage');
+
+        } catch (error) {
+          console.error('Failed to set theme:', error);
+        }
+      }
+
+      function toggleTheme() {
+        try {
+          console.log('Toggling theme...');
+          const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+          console.log('Current theme detected:', currentTheme);
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          console.log('Switching to theme:', newTheme);
+          setTheme(newTheme);
+        } catch (error) {
+          console.error('Failed to toggle theme:', error);
+        }
+      }
+
+      // Smooth scrolling functionality
+      function initializeSmoothScrolling() {
+        try {
+          const button = document.querySelector('#latestWorkBtn');
+          const target = document.querySelector('#work');
+
+          if (button && target) {
+            button.addEventListener('click', () => {
+              target.scrollIntoView({ behavior: CONFIG.SCROLL_BEHAVIOR });
+            });
+          }
+        } catch (error) {
+          showError('Failed to initialize smooth scrolling: ' + error.message);
+        }
+      }
+
+      // Theme toggle functionality
+      function initializeThemeToggle() {
+        try {
+          const themeToggle = document.getElementById('themeToggle');
+
+          if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
+            console.log('Theme toggle button initialized');
+          }
+        } catch (error) {
+          console.error('Failed to initialize theme toggle:', error);
+        }
+      }
+
+
+      // About popup functionality
+      function initializeAboutPopup() {
+        try {
+          console.log('Initializing About Me popup...');
+          const aboutBtn = document.getElementById('aboutMeBtn');
+          console.log('Found About Me button:', aboutBtn);
+
+          if (!aboutBtn) {
+            console.error('About Me button not found');
+            return;
+          }
+
+          aboutBtn.addEventListener('click', handleAboutButtonClick);
+          console.log('About Me button click listener added');
+        } catch (error) {
+          console.error('Error initializing About Me popup:', error);
+          showError('Failed to initialize about popup: ' + error.message);
+        }
+      }
+
+      async function handleAboutButtonClick() {
+        try {
+          console.log('About button clicked, fetching aboutMe.html...');
+
+          // Fetch the popup HTML
+          const response = await fetch('aboutMe.html');
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const html = await response.text();
+          console.log('Fetched HTML:', html.substring(0, 200) + '...');
+
+          // Create wrapper and append popup
+          const wrapper = createPopupWrapper(html);
+          document.body.appendChild(wrapper);
+
+          // Initialize popup functionality
+          initializePopupFunctionality(wrapper);
+
+        } catch (error) {
+          console.error('Error in handleAboutButtonClick:', error);
+          showError('Failed to load about popup: ' + error.message);
+        }
+      }
+
+      function createPopupWrapper(html) {
         const wrapper = document.createElement('div');
         wrapper.innerHTML = html;
         wrapper.classList.add(
           'fixed', 'top-0', 'left-0', 'w-full', 'h-full',
           'bg-black', 'bg-opacity-70', 'z-50', 'overflow-auto', 'backdrop-blur-sm'
         );
-        document.body.appendChild(wrapper);
+        return wrapper;
+      }
 
-        // Find the popup and animate it
-        const popup = wrapper.querySelector('#aboutPopup');
-        if (popup) {
-          setTimeout(() => {
-            popup.classList.remove('opacity-0', 'scale-95');
-            popup.classList.add('opacity-100', 'scale-100');
-          }, 50);
-        }
+      function initializePopupFunctionality(wrapper) {
+        try {
+          console.log('Initializing popup functionality...');
 
-        // Close button logic
-        const closeBtn = wrapper.querySelector('#aboutCloseBtn');
-        if (closeBtn) {
-          closeBtn.addEventListener('click', () => {
-            wrapper.remove();
+          // Find popup and animate it
+          const popup = wrapper.querySelector('#aboutPopup');
+          console.log('Found popup element:', popup);
+
+          if (popup) {
+            console.log('Animating popup...');
+            requestAnimationFrame(() => {
+              setTimeout(() => {
+                popup.classList.remove('opacity-0', 'scale-95');
+                popup.classList.add('opacity-100', 'scale-100');
+                console.log('Popup animation complete');
+              }, CONFIG.ANIMATION_DELAY);
+            });
+          } else {
+            console.error('Popup element not found in wrapper');
+          }
+
+          // Close button logic
+          const closeBtn = wrapper.querySelector('#aboutCloseBtn');
+          if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+              wrapper.remove();
+            });
+          }
+
+          // Close on backdrop click
+          wrapper.addEventListener('click', (e) => {
+            if (e.target === wrapper) {
+              wrapper.remove();
+            }
           });
+
+          // Close on escape key
+          const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+              wrapper.remove();
+              document.removeEventListener('keydown', handleEscape);
+            }
+          };
+          document.addEventListener('keydown', handleEscape);
+
+        } catch (error) {
+          showError('Failed to initialize popup functionality: ' + error.message);
         }
-      });
-    });
+      }
+
+      // Form validation and handling
+      function initializeContactForm() {
+        try {
+          const form = document.querySelector('form[name="contactUS"]');
+          if (!form) return;
+
+          const nameInput = form.querySelector('#name');
+          const emailInput = form.querySelector('#email');
+          const messageInput = form.querySelector('#message');
+          const submitButton = form.querySelector('button[type="submit"]');
+
+          if (!nameInput || !emailInput || !messageInput || !submitButton) return;
+
+          // Real-time validation
+          nameInput.addEventListener('input', () => validateField(nameInput, 'name'));
+          emailInput.addEventListener('input', () => validateField(emailInput, 'email'));
+          messageInput.addEventListener('input', () => {
+            validateField(messageInput, 'message');
+            updateMessageCounter(messageInput);
+          });
+
+          // Form submission
+          form.addEventListener('submit', handleFormSubmit);
+
+        } catch (error) {
+          showError('Failed to initialize contact form: ' + error.message);
+        }
+      }
+
+      function validateField(field, fieldType) {
+        const errorElement = document.getElementById(`${fieldType}-error`);
+        const isValid = getFieldValidity(field, fieldType);
+
+        field.setAttribute('aria-invalid', !isValid);
+
+        if (errorElement) {
+          if (!isValid) {
+            errorElement.textContent = getFieldErrorMessage(field, fieldType);
+            errorElement.classList.remove('hidden');
+          } else {
+            errorElement.classList.add('hidden');
+          }
+        }
+
+        return isValid;
+      }
+
+      function getFieldValidity(field, fieldType) {
+        const value = field.value.trim();
+
+        switch (fieldType) {
+          case 'name':
+            return value.length >= 2 && value.length <= 100;
+          case 'email':
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(value);
+          case 'message':
+            return value.length >= 10 && value.length <= 1000;
+          default:
+            return true;
+        }
+      }
+
+      function getFieldErrorMessage(field, fieldType) {
+        const value = field.value.trim();
+
+        switch (fieldType) {
+          case 'name':
+            if (value.length < 2) return 'Name must be at least 2 characters long';
+            if (value.length > 100) return 'Name must be less than 100 characters';
+            break;
+          case 'email':
+            if (!value) return 'Email is required';
+            return 'Please enter a valid email address';
+          case 'message':
+            if (value.length < 10) return 'Message must be at least 10 characters long';
+            if (value.length > 1000) return 'Message must be less than 1000 characters';
+            break;
+        }
+        return 'This field is invalid';
+      }
+
+      function updateMessageCounter(textarea) {
+        const counter = document.getElementById('message-counter');
+        if (counter) {
+          const length = textarea.value.length;
+          counter.textContent = `${length}/1000`;
+
+          // Change color based on length
+          if (length > 900) {
+            counter.classList.add('text-red-500');
+            counter.classList.remove('text-gray-500');
+          } else if (length > 800) {
+            counter.classList.add('text-yellow-500');
+            counter.classList.remove('text-gray-500', 'text-red-500');
+          } else {
+            counter.classList.remove('text-yellow-500', 'text-red-500');
+            counter.classList.add('text-gray-500');
+          }
+        }
+      }
+
+      async function handleFormSubmit(event) {
+        event.preventDefault();
+
+        try {
+          const form = event.target;
+          const submitButton = form.querySelector('button[type="submit"]');
+          const submitText = submitButton.querySelector('.submit-text');
+          const submitLoading = submitButton.querySelector('.submit-loading');
+          const statusElement = document.getElementById('submit-status');
+
+          // Validate all fields
+          const nameInput = form.querySelector('#name');
+          const emailInput = form.querySelector('#email');
+          const messageInput = form.querySelector('#message');
+
+          const isNameValid = validateField(nameInput, 'name');
+          const isEmailValid = validateField(emailInput, 'email');
+          const isMessageValid = validateField(messageInput, 'message');
+
+          if (!isNameValid || !isEmailValid || !isMessageValid) {
+            showFormStatus(statusElement, 'Please fix the errors above', 'error');
+            return;
+          }
+
+          // Show loading state
+          submitButton.disabled = true;
+          submitText.classList.add('hidden');
+          submitLoading.classList.remove('hidden');
+
+          // Simulate form submission (replace with actual submission logic)
+          await new Promise(resolve => setTimeout(resolve, 1000));
+
+          // Show success message
+          showFormStatus(statusElement, 'Message sent successfully! I\'ll get back to you soon.', 'success');
+          form.reset();
+
+          // Reset message counter
+          updateMessageCounter(messageInput);
+
+        } catch (error) {
+          showFormStatus(document.getElementById('submit-status'), 'Failed to send message. Please try again.', 'error');
+        } finally {
+          // Reset button state
+          const submitButton = form.querySelector('button[type="submit"]');
+          const submitText = submitButton.querySelector('.submit-text');
+          const submitLoading = submitButton.querySelector('.submit-loading');
+
+          submitButton.disabled = false;
+          submitText.classList.remove('hidden');
+          submitLoading.classList.add('hidden');
+        }
+      }
+
+      function showFormStatus(element, message, type) {
+        if (!element) return;
+
+        element.textContent = message;
+        element.classList.remove('hidden');
+
+        // Remove existing classes
+        element.classList.remove('text-green-600', 'text-red-600');
+
+        // Add appropriate styling
+        if (type === 'success') {
+          element.classList.add('text-green-600');
+        } else if (type === 'error') {
+          element.classList.add('text-red-600');
+        }
+
+        // Auto-hide after 5 seconds
+        setTimeout(() => {
+          element.classList.add('hidden');
+        }, 5000);
+      }
+
+      // Initialize all functionality
+      function initializePortfolio() {
+        try {
+          console.log('Initializing portfolio...');
+          initializeTheme();
+          console.log('Theme initialized');
+          initializeThemeToggle();
+          console.log('Theme toggle initialized');
+          initializeSmoothScrolling();
+          console.log('Smooth scrolling initialized');
+          initializeAboutPopup();
+          console.log('About popup initialized');
+          initializeContactForm();
+          console.log('Contact form initialized');
+          console.log('Portfolio initialization complete');
+        } catch (error) {
+          console.error('Error initializing portfolio:', error);
+          showError('Failed to initialize portfolio: ' + error.message);
+        }
+      }
+
+      // Initialize when DOM is ready
+      console.log('Current document ready state:', document.readyState);
+      if (document.readyState === 'loading') {
+        console.log('DOM still loading, adding DOMContentLoaded listener...');
+        document.addEventListener('DOMContentLoaded', initializePortfolio);
+      } else {
+        console.log('DOM already loaded, initializing immediately...');
+        initializePortfolio();
+      }
+
+    })();
   </script>
 
 

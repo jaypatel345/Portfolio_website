@@ -1,109 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Me</title>
-    <link rel="stylesheet" href="output.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Jay Patel - MERN Stack Developer">
+    <title>About Me - Jay Patel</title>
+    <link rel="stylesheet" href="output.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-[#111] text-white font-['Nunito']">
-
-    <!-- Main popup container with animation classes -->
-    <div id="aboutPopup" class="bg-[#232323] rounded-2xl p-8 md:p-12 max-w-4xl w-full mx-auto mt-20 relative z-50 shadow-lg
-            opacity-0 scale-95 transform transition duration-500 ease-out">
+    <!-- Main popup container with improved accessibility -->
+    <main id="aboutPopup" 
+           class="bg-[#232323] rounded-2xl p-8 md:p-12 max-w-4xl w-full mx-auto mt-20 relative z-50 shadow-lg opacity-0 scale-95 transform transition duration-500 ease-out"
+           role="dialog" 
+           aria-labelledby="about-title" 
+           aria-describedby="about-description">
+        
+        <!-- Close button with improved accessibility -->
         <button id="aboutCloseBtn"
-            class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
+                class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded"
+                aria-label="Close about me popup"
+                type="button">
+            &times;
+        </button>
 
         <div class="flex flex-col md:flex-row gap-8">
-            <!-- Left: Text -->
-            <div class="flex-1">
-                <h2 class="text-cyan-400 text-2xl font-bold mb-4">ABOUT ME</h2>
-                <p class="text-gray-200 mb-4">
-                    Hi, I’m Jay Patel — a front-end developer. I enjoy creating clean,
-                    responsive, and user-friendly websites that not only look great
-                    but also feel smooth and intuitive to use. My go-to tools are React.js, Tailwind CSS, and
-                    JavaScript, and I’m always focused on building experiences that connect with users.
-                    I’m also comfortable working with Node.js, MongoDB. Whether
-                    it’s a portfolio, a web app, or something totally new. I like to think through both the design and
-                    the tech to build something meaningful.
+            <!-- Left: Text content -->
+            <section class="flex-1">
+                <h1 id="about-title" class="text-cyan-400 text-2xl font-bold mb-4">ABOUT ME</h1>
+                <p id="about-description" class="text-gray-200 mb-4 text-sm leading-relaxed">
+                    Hi, I'm Jay Patel — a passionate MERN Stack Developer with a keen eye for creating 
+                    exceptional digital experiences. I specialize in building modern, responsive web applications 
+                    that combine cutting-edge technology with intuitive design. With expertise in React.js, 
+                    Node.js, and MongoDB, I transform complex ideas into elegant, scalable solutions that 
+                    users love to interact with.
                 </p>
 
-                <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm">#javascript</span>
-                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm">#react.js</span>
-                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm">#node.js</span>
-                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm">#express.js</span>
-                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm">#mongoDB</span>
-                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm">#tailwind</span>
-                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm">#github</span>
+                <!-- Skills tags with semantic markup -->
+                <div class="flex flex-wrap gap-2 mb-6" role="list" aria-label="Technical skills">
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm" role="listitem">#javascript</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm" role="listitem">#react.js</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm" role="listitem">#node.js</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm" role="listitem">#express.js</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm" role="listitem">#mongoDB</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm" role="listitem">#tailwind</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm" role="listitem">#github</span>
                 </div>
 
-                <h3 class="text-cyan-400 text-lg font-semibold mt-2 mb-3">MERN STACK</h3>
-                <div class="flex items-center space-x-8 mb-2">
+                <h2 class="text-cyan-400 text-lg font-semibold mt-2 mb-3">MERN STACK</h2>
+                
+                <!-- MERN stack visualization with improved accessibility -->
+                <div class="flex items-center space-x-8 mb-2" role="list" aria-label="MERN stack technologies">
                     <!-- MongoDB -->
-                    <div class="relative group flex flex-col items-center">
-                        <img src="./assets/icons/mongodb.svg" alt="MongoDB" class="w-10 h-10 mb-1" />
-                        <span class="text-green-400 font-bold tracking-widest">M</span>
-                        <div
-                            class="absolute bottom-14 bg-green-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="relative group flex flex-col items-center" role="listitem">
+                        <img src="./assets/icons/mongodb.svg" 
+                             alt="MongoDB logo" 
+                             class="w-10 h-10 mb-1"
+                             loading="lazy">
+                        <span class="text-green-400 font-bold tracking-widest" aria-label="MongoDB">M</span>
+                        <div class="absolute bottom-14 bg-green-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+                             role="tooltip">
                             MongoDB
                         </div>
                     </div>
 
                     <!-- Express -->
-                    <div class="relative group flex flex-col items-center">
-                        <img src="./assets/icons/express.svg" alt="Express" class="w-10 h-10 mb-1" />
-                        <span class="text-gray-300 font-bold tracking-widest">E</span>
-                        <div
-                            class="absolute bottom-14 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="relative group flex flex-col items-center" role="listitem">
+                        <img src="./assets/icons/express.svg" 
+                             alt="Express.js logo" 
+                             class="w-10 h-10 mb-1"
+                             loading="lazy">
+                        <span class="text-gray-300 font-bold tracking-widest" aria-label="Express.js">E</span>
+                        <div class="absolute bottom-14 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+                             role="tooltip">
                             Express.js
                         </div>
                     </div>
 
                     <!-- React -->
-                    <div class="relative group flex flex-col items-center">
-                        <img src="./assets/icons/react.svg" alt="React" class="w-10 h-10 mb-1" />
-                        <span class="text-cyan-400 font-bold tracking-widest">R</span>
-                        <div
-                            class="absolute bottom-14 bg-blue-400 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="relative group flex flex-col items-center" role="listitem">
+                        <img src="./assets/icons/react.svg" 
+                             alt="React.js logo" 
+                             class="w-10 h-10 mb-1"
+                             loading="lazy">
+                        <span class="text-cyan-400 font-bold tracking-widest" aria-label="React.js">R</span>
+                        <div class="absolute bottom-14 bg-blue-400 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+                             role="tooltip">
                             React.js
                         </div>
                     </div>
 
                     <!-- Node.js -->
-                    <div class="relative group flex flex-col items-center">
-                        <img src="./assets/icons/node.svg" alt="Node.js" class="w-10 h-10 mb-1" />
-                        <span class="text-green-500 font-bold tracking-widest">N</span>
-                        <div
-                            class="absolute bottom-14 bg-green-500 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="relative group flex flex-col items-center" role="listitem">
+                        <img src="./assets/icons/node.svg" 
+                             alt="Node.js logo" 
+                             class="w-10 h-10 mb-1"
+                             loading="lazy">
+                        <span class="text-green-600 font-bold tracking-widest" aria-label="Node.js">N</span>
+                        <div class="absolute bottom-14 bg-green-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+                             role="tooltip">
                             Node.js
                         </div>
                     </div>
                 </div>
-            </div>
+
+                
+            </section>
 
             <!-- Right: Illustration -->
-            <div class="flex items-center justify-center md:justify-end">
-                <img src="./assets/images/coder.svg" alt="Developer Illustration" class="max-w-xs w-full" />
-            </div>
+            <aside class="flex-1 flex items-center justify-center">
+                <img src="./assets/images/coder.svg" 
+                     alt="Developer illustration" 
+                     class="w-64 h-64 opacity-80"
+                     loading="lazy">
+            </aside>
         </div>
-    </div>
+    </main>
 
-    <!-- Animation trigger script (only runs if injected via fetch) -->
+    <!-- Improved animation script with error handling -->
     <script>
-        window.addEventListener("load", () => {
-            const popup = document.getElementById("aboutPopup");
-            if (popup) {
-                setTimeout(() => {
-                    popup.classList.remove("opacity-0", "scale-95");
-                    popup.classList.add("opacity-100", "scale-100");
-                }, 50);
+        (function() {
+            'use strict';
+            
+            function initializeAboutPopup() {
+                const popup = document.getElementById('aboutPopup');
+                if (!popup) return;
+                
+                // Add entrance animation
+                const animatePopup = () => {
+                    popup.classList.remove('opacity-0', 'scale-95');
+                    popup.classList.add('opacity-100', 'scale-100');
+                };
+                
+                // Use requestAnimationFrame for better performance
+                requestAnimationFrame(() => {
+                    setTimeout(animatePopup, 50);
+                });
             }
-        });
+            
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeAboutPopup);
+            } else {
+                initializeAboutPopup();
+            }
+        })();
     </script>
 </body>
-
 </html>
