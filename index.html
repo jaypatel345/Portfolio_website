@@ -724,93 +724,110 @@
 
 
     <section class="max-w-screen-xl mx-auto px-4 pb-12">
-      <h2
-        class="text-3xl sm:text-[40px] relative z-10 font-bold px-4 py-2 w-max mx-auto text-center sm:border-2 rounded-md"
-        style="background-color: var(--bg-primary); color: var(--accent-primary); border-color: var(--accent-primary);">
-        Let's Connect
-      </h2>
-      <div class="flex flex-col md:flex-row items-center mt-10">
-        <div class="w-full">
-          <img src="./assets/images/contact-me.svg" alt="phone" />
+  <h2
+    class="text-3xl sm:text-[40px] relative z-10 font-bold px-4 py-2 w-max mx-auto text-center sm:border-2 rounded-md"
+    style="background-color: var(--bg-primary); color: var(--accent-primary); border-color: var(--accent-primary);">
+    Let's Connect
+  </h2>
+  <div class="flex flex-col md:flex-row items-center mt-10">
+    <div class="w-full">
+      <img src="./assets/images/contact-me.svg" alt="phone" />
+    </div>
+
+    <!--  Updated Netlify-ready form -->
+    <form 
+      class="w-full" 
+      name="contactUS" 
+      method="POST" 
+      data-netlify="true" 
+      netlify-honeypot="bot-field"
+      action="/thanks.html"
+      novalidate
+    >
+      <!-- Required hidden field for Netlify -->
+      <input type="hidden" name="form-name" value="contactUS" />
+
+      <!-- Honeypot field (hidden) -->
+      <p class="hidden">
+        <label>Don’t fill this out: <input name="bot-field" /></label>
+      </p>
+
+      <fieldset>
+        <legend class="sr-only">Contact Information</legend>
+
+        <!-- Name Field -->
+        <div class="mb-4">
+          <label for="name" class="block mb-2 text-sm font-medium" style="color: var(--text-primary);">
+            Name <span class="text-red-500" aria-label="required">*</span>
+          </label>
+          <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+              <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
+              </svg>
+            </div>
+            <input type="text" id="name" name="name" required minlength="2" maxlength="100"
+              class="border-2 outline-none text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 transition-colors duration-200"
+              style="background-color: var(--input-bg); border-color: var(--input-border); color: var(--input-text);"
+              placeholder="Enter your full name" aria-describedby="name-error" aria-invalid="false" />
+            <div id="name-error" class="hidden text-red-500 text-xs mt-1" role="alert"></div>
+          </div>
         </div>
-        <form class="w-full" name="contactUS" method="POST" netlify novalidate>
-          <fieldset>
-            <legend class="sr-only">Contact Information</legend>
 
-            <!-- Name Field -->
-            <div class="mb-4">
-              <label for="name" class="block mb-2 text-sm font-medium" style="color: var(--text-primary);">
-                Name <span class="text-red-500" aria-label="required">*</span>
-              </label>
-              <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
-                  </svg>
-                </div>
-                <input type="text" id="name" name="name" required minlength="2" maxlength="100"
-                  class="border-2 outline-none text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 transition-colors duration-200"
-                  style="background-color: var(--input-bg); border-color: var(--input-border); color: var(--input-text);"
-                  placeholder="Enter your full name" aria-describedby="name-error" aria-invalid="false" />
-                <div id="name-error" class="hidden text-red-500 text-xs mt-1" role="alert"></div>
-              </div>
+        <!-- Email Field -->
+        <div class="mb-4">
+          <label for="email" class="block mb-2 text-sm font-medium" style="color: var(--text-primary);">
+            Email <span class="text-red-500" aria-label="required">*</span>
+          </label>
+          <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+              <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
+                <path
+                  d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
+                <path
+                  d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
+              </svg>
             </div>
+            <input type="email" id="email" name="email" required
+              class="border-2 outline-none text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 transition-colors duration-200"
+              style="background-color: var(--input-bg); border-color: var(--input-border); color: var(--input-text);"
+              placeholder="your.email@example.com" aria-describedby="email-error" aria-invalid="false" />
+            <div id="email-error" class="hidden text-red-500 text-xs mt-1" role="alert"></div>
+          </div>
+        </div>
 
-            <!-- Email Field -->
-            <div class="mb-4">
-              <label for="email" class="block mb-2 text-sm font-medium" style="color: var(--text-primary);">
-                Email <span class="text-red-500" aria-label="required">*</span>
-              </label>
-              <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                  <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
-                    <path
-                      d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
-                    <path
-                      d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
-                  </svg>
-                </div>
-                <input type="email" id="email" name="email" required
-                  class="border-2 outline-none text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 transition-colors duration-200"
-                  style="background-color: var(--input-bg); border-color: var(--input-border); color: var(--input-text);"
-                  placeholder="your.email@example.com" aria-describedby="email-error" aria-invalid="false" />
-                <div id="email-error" class="hidden text-red-500 text-xs mt-1" role="alert"></div>
-              </div>
-            </div>
+        <!-- Message Field -->
+        <div class="mb-4">
+          <label for="message" class="block mb-2 text-sm font-medium" style="color: var(--text-primary);">
+            Message <span class="text-red-500" aria-label="required">*</span>
+          </label>
+          <div class="relative">
+            <textarea id="message" name="message" rows="6" required minlength="10" maxlength="1000"
+              class="border-2 outline-none text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full p-2.5 transition-colors duration-200 resize-vertical"
+              style="background-color: var(--input-bg); border-color: var(--input-border); color: var(--input-text);"
+              placeholder="Tell me about your project or how I can help you..."
+              aria-describedby="message-error message-counter" aria-invalid="false"></textarea>
+            <div id="message-error" class="hidden text-red-500 text-xs mt-1" role="alert"></div>
+            <div id="message-counter" class="text-xs text-right mt-1" style="color: var(--text-secondary);" aria-live="polite">0/1000</div>
+          </div>
+        </div>
 
-            <!-- Message Field -->
-            <div class="mb-4">
-              <label for="message" class="block mb-2 text-sm font-medium" style="color: var(--text-primary);">
-                Message <span class="text-red-500" aria-label="required">*</span>
-              </label>
-              <div class="relative">
-                <textarea id="message" name="message" rows="6" required minlength="10" maxlength="1000"
-                  class="border-2 outline-none text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full p-2.5 transition-colors duration-200 resize-vertical"
-                  style="background-color: var(--input-bg); border-color: var(--input-border); color: var(--input-text);"
-                  placeholder="Tell me about your project or how I can help you..."
-                  aria-describedby="message-error message-counter" aria-invalid="false"></textarea>
-                <div id="message-error" class="hidden text-red-500 text-xs mt-1" role="alert"></div>
-                <div id="message-counter" class="text-xs text-right mt-1" style="color: var(--text-secondary);"
-                  aria-live="polite">0/1000</div>
-              </div>
-            </div>
+        <!-- Submit Button -->
+        <button type="submit"
+          class="w-full text-white bg-[#1788ae] hover:bg-[#1280a4] focus:ring-4 focus:ring-[#4489a0] font-medium rounded-lg text-sm px-5 py-2.5 transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
+          aria-describedby="submit-status">
+          <span class="submit-text">Send Message</span>
+          <span class="submit-loading hidden">Sending...</span>
+        </button>
 
-            <!-- Submit Button -->
-            <button type="submit"
-              class="w-full text-white bg-[#1788ae] hover:bg-[#1280a4] focus:ring-4 focus:ring-[#4489a0] font-medium rounded-lg text-sm px-5 py-2.5 transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
-              aria-describedby="submit-status">
-              <span class="submit-text">Send Message</span>
-              <span class="submit-loading hidden">Sending...</span>
-            </button>
-
-            <div id="submit-status" class="hidden mt-2 text-sm" role="status" aria-live="polite"></div>
-          </fieldset>
-        </form>
-      </div>
-    </section>
+        <div id="submit-status" class="hidden mt-2 text-sm" role="status" aria-live="polite"></div>
+      </fieldset>
+    </form>
+  </div>
+</section>
     <footer class="flex flex-col items-center pb-10">
       <p class="text-xs" style="color: var(--text-secondary);">Jay Patel © 2025</p>
       <div class="black-logo my-4">
