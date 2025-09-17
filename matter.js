@@ -1,6 +1,6 @@
 /**
  * Matter.js Physics Engine Integration
- * Enhanced with modern JavaScript practices and error handling
+ * Enhanced with theme-based visibility and modern JavaScript practices
  */
 
 (function() {
@@ -12,12 +12,22 @@
         ATTRACTOR_STRENGTH: 1e-6,
         GRAVITY_SCALE: 0.1,
         MOUSE_SMOOTHING: 0.12,
-        RESIZE_DEBOUNCE: 250
+        RESIZE_DEBOUNCE: 250,
+        THEME_CHECK_INTERVAL: 100
     };
     
     // State management
     let matterInstance = null;
     let isInitialized = false;
+    let themeObserver = null;
+    let resizeHandler = null;
+    
+    /**
+     * Check if current theme is dark
+     */
+    function isDarkTheme() {
+        return document.documentElement.classList.contains('dark');
+    }
     
     /**
      * Get canvas element with error handling
@@ -94,6 +104,12 @@
             // Check if Matter.js is available
             if (typeof Matter === 'undefined') {
                 console.error("Matter.js library not loaded");
+                return null;
+            }
+            
+            // Only initialize if in dark theme
+            if (!isDarkTheme()) {
+                console.log("Skipping Matter.js initialization - light theme active");
                 return null;
             }
             
@@ -218,6 +234,8 @@
             Runner.run(runner, engine);
             Render.run(render);
             
+            console.log("Matter.js initialized for dark theme");
+            
             // Return control interface
             return {
                 engine: engine,
@@ -241,6 +259,48 @@
     }
     
     /**
+     * Destroy Matter.js instance and clean up
+     */
+    function destroyMatter() {
+        try {
+            if (matterInstance) {
+                // Stop the engine and renderer
+                matterInstance.stop();
+                
+                // Remove canvas from DOM
+                if (matterInstance.canvas && matterInstance.canvas.parentNode) {
+                    matterInstance.canvas.parentNode.removeChild(matterInstance.canvas);
+                }
+                
+                // Clear references
+                matterInstance = null;
+                console.log("Matter.js destroyed for light theme");
+            }
+        } catch (error) {
+            console.warn("Error destroying Matter.js:", error);
+        }
+    }
+    
+    /**
+     * Initialize Matter.js based on current theme
+     */
+    function initializeBasedOnTheme() {
+        if (isDarkTheme()) {
+            if (!isInitialized) {
+                matterInstance = runMatter();
+                if (matterInstance) {
+                    isInitialized = true;
+                }
+            }
+        } else {
+            if (isInitialized) {
+                destroyMatter();
+                isInitialized = false;
+            }
+        }
+    }
+    
+    /**
      * Debounce function for performance optimization
      */
     function debounce(func, wait) {
@@ -260,13 +320,17 @@
      */
     function handleResize() {
         try {
-            if (!matterInstance || !matterInstance.render) return;
+            if (!matterInstance || !matterInstance.render || !isDarkTheme()) return;
             
             const dimensions = getWindowDimensions();
             
             // Update canvas dimensions
             matterInstance.render.canvas.width = dimensions.width;
             matterInstance.render.canvas.height = dimensions.height;
+            
+            // Update render options
+            matterInstance.render.options.width = dimensions.width;
+            matterInstance.render.options.height = dimensions.height;
             
             return dimensions;
         } catch (error) {
@@ -275,27 +339,78 @@
     }
     
     /**
-     * Initialize the physics engine
+     * Set up theme observation
+     */
+    function setupThemeObserver() {
+        // Use MutationObserver to watch for class changes on html element
+        if (typeof MutationObserver !== 'undefined') {
+            themeObserver = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        initializeBasedOnTheme();
+                    }
+                });
+            });
+            
+            themeObserver.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['class']
+            });
+        } else {
+            // Fallback: periodic check
+            setInterval(function() {
+                const shouldShow = isDarkTheme();
+                const isCurrentlyShown = isInitialized;
+                
+                if (shouldShow && !isCurrentlyShown) {
+                    initializeBasedOnTheme();
+                } else if (!shouldShow && isCurrentlyShown) {
+                    initializeBasedOnTheme();
+                }
+            }, CONFIG.THEME_CHECK_INTERVAL);
+        }
+    }
+    
+    /**
+     * Initialize the physics engine with theme awareness
      */
     function initialize() {
-        if (isInitialized) return;
-        
         try {
-            matterInstance = runMatter();
-            if (matterInstance) {
-                isInitialized = true;
-                
-                // Set up resize handler
-                const debouncedResize = debounce(handleResize, CONFIG.RESIZE_DEBOUNCE);
-                window.addEventListener('resize', debouncedResize);
-                
-                // Initial size setup
-                handleResize();
-                
-                console.log("Matter.js physics engine initialized successfully");
-            }
+            // Initial theme-based initialization
+            initializeBasedOnTheme();
+            
+            // Set up theme observer
+            setupThemeObserver();
+            
+            // Set up resize handler
+            resizeHandler = debounce(handleResize, CONFIG.RESIZE_DEBOUNCE);
+            window.addEventListener('resize', resizeHandler);
+            
+            console.log("Matter.js theme-aware system initialized");
         } catch (error) {
-            console.error("Failed to initialize physics engine:", error);
+            console.error("Failed to initialize Matter.js theme system:", error);
+        }
+    }
+    
+    /**
+     * Clean up all event listeners and observers
+     */
+    function cleanup() {
+        try {
+            if (themeObserver) {
+                themeObserver.disconnect();
+                themeObserver = null;
+            }
+            
+            if (resizeHandler) {
+                window.removeEventListener('resize', resizeHandler);
+                resizeHandler = null;
+            }
+            
+            destroyMatter();
+            isInitialized = false;
+        } catch (error) {
+            console.warn("Error during cleanup:", error);
         }
     }
     
@@ -304,8 +419,11 @@
      */
     window.MatterPhysics = {
         initialize: initialize,
+        cleanup: cleanup,
         getInstance: () => matterInstance,
-        isInitialized: () => isInitialized
+        isInitialized: () => isInitialized,
+        isDarkTheme: isDarkTheme,
+        forceReinitialize: initializeBasedOnTheme
     };
     
     // Auto-initialize when DOM is ready
@@ -314,5 +432,8 @@
     } else {
         initialize();
     }
+    
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', cleanup);
     
 })();
