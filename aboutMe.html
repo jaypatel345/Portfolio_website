@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,134 +12,136 @@
 
 <body class="bg-[#111] text-white font-['Nunito']">
     <!-- Main popup container with improved accessibility -->
-    <main id="aboutPopup" 
-           class="bg-[#232323] rounded-2xl p-8 md:p-12 max-w-4xl w-full mx-auto mt-20 relative z-50 shadow-lg opacity-0 scale-95 transform transition duration-500 ease-out"
-           role="dialog" 
-           aria-labelledby="about-title" 
-           aria-describedby="about-description">
-        
+    <main id="aboutPopup"
+        class="bg-[#232323] rounded-2xl p-8 md:p-12 max-w-4xl w-full mx-auto mt-20 relative z-50 shadow-lg opacity-0 scale-95 transform transition duration-500 ease-out"
+        role="dialog" aria-labelledby="about-title" aria-describedby="about-description">
+
         <!-- Close button with improved accessibility -->
         <button id="aboutCloseBtn"
-                class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded"
-                aria-label="Close about me popup"
-                type="button">
+            class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded"
+            aria-label="Close about me popup" type="button">
             &times;
         </button>
 
         <div class="flex flex-col md:flex-row gap-8">
             <!-- Left: Text content -->
             <section class="flex-1">
-                <h1 id="about-title" class="text-cyan-400 text-2xl font-bold mb-4">ABOUT ME</h1>
+                <h1 id="about-title" class="text-cyan-400 text-2xl font-bold mb-4 flex items-center">
+                    ABOUT ME
+                    <a href="./assets/JayPatel-CV.pdf" download
+                        class="ml-5 text-white font-medium text-[12px] px-3 py-1 rounded-md bg-gradient-to-l from-[#4169e1] to-[#89CFF0] hover:opacity-90 transition ease-in-out duration-200">
+                        Download CV
+                    </a>
+                    <a href="./assets/JayPatel-CV.pdf" target="_blank" rel="noopener noreferrer"
+                        class="ml-2 text-white font-medium text-[12px] px-3 py-1 rounded-md bg-gradient-to-l from-[#4169e1] to-[#89CFF0] hover:opacity-90 transition ease-in-out duration-200">
+                        View CV
+                    </a>
+                </h1>
+
                 <p id="about-description" class="text-gray-200 mb-4 text-sm leading-relaxed">
-                    Hi, I'm Jay Patel — a passionate MERN Stack Developer with a keen eye for creating 
-                    exceptional digital experiences. I specialize in building modern, responsive web applications 
-                    that combine cutting-edge technology with intuitive design. With expertise in React.js, 
-                    Node.js, and MongoDB, I transform complex ideas into elegant, scalable solutions that 
+                    Hi, I'm Jay Patel — a passionate MERN Stack Developer with a keen eye for creating
+                    exceptional digital experiences. I specialize in building modern, responsive web applications
+                    that combine cutting-edge technology with intuitive design. With expertise in React.js,
+                    Node.js, and MongoDB, I transform complex ideas into elegant, scalable solutions that
                     users love to interact with.
                 </p>
 
                 <!-- Skills tags with semantic markup -->
                 <div class="flex flex-wrap gap-2 mb-6" role="list" aria-label="Technical skills">
-                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm" role="listitem">#javascript</span>
-                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm" role="listitem">#react.js</span>
-                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm" role="listitem">#node.js</span>
-                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm" role="listitem">#express.js</span>
-                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm" role="listitem">#mongoDB</span>
-                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm" role="listitem">#tailwind</span>
-                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm" role="listitem">#github</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm"
+                        role="listitem">#javascript</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm"
+                        role="listitem">#react.js</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm"
+                        role="listitem">#node.js</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm"
+                        role="listitem">#express.js</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm"
+                        role="listitem">#mongoDB</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm"
+                        role="listitem">#tailwind</span>
+                    <span class="bg-[#181818] text-gray-100 px-3 py-1 rounded-full text-sm"
+                        role="listitem">#github</span>
                 </div>
 
                 <h2 class="text-cyan-400 text-lg font-semibold mt-2 mb-3">MERN STACK</h2>
-                
+
                 <!-- MERN stack visualization with improved accessibility -->
                 <div class="flex items-center space-x-8 mb-2" role="list" aria-label="MERN stack technologies">
                     <!-- MongoDB -->
                     <div class="relative group flex flex-col items-center" role="listitem">
-                        <img src="./assets/icons/mongodb.svg" 
-                             alt="MongoDB logo" 
-                             class="w-10 h-10 mb-1"
-                             loading="lazy">
+                        <img src="./assets/icons/mongodb.svg" alt="MongoDB logo" class="w-10 h-10 mb-1" loading="lazy">
                         <span class="text-green-400 font-bold tracking-widest" aria-label="MongoDB">M</span>
                         <div class="absolute bottom-14 bg-green-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity"
-                             role="tooltip">
+                            role="tooltip">
                             MongoDB
                         </div>
                     </div>
 
                     <!-- Express -->
                     <div class="relative group flex flex-col items-center" role="listitem">
-                        <img src="./assets/icons/express.svg" 
-                             alt="Express.js logo" 
-                             class="w-10 h-10 mb-1"
-                             loading="lazy">
+                        <img src="./assets/icons/express.svg" alt="Express.js logo" class="w-10 h-10 mb-1"
+                            loading="lazy">
                         <span class="text-gray-300 font-bold tracking-widest" aria-label="Express.js">E</span>
                         <div class="absolute bottom-14 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity"
-                             role="tooltip">
+                            role="tooltip">
                             Express.js
                         </div>
                     </div>
 
                     <!-- React -->
                     <div class="relative group flex flex-col items-center" role="listitem">
-                        <img src="./assets/icons/react.svg" 
-                             alt="React.js logo" 
-                             class="w-10 h-10 mb-1"
-                             loading="lazy">
+                        <img src="./assets/icons/react.svg" alt="React.js logo" class="w-10 h-10 mb-1" loading="lazy">
                         <span class="text-cyan-400 font-bold tracking-widest" aria-label="React.js">R</span>
                         <div class="absolute bottom-14 bg-blue-400 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity"
-                             role="tooltip">
+                            role="tooltip">
                             React.js
                         </div>
                     </div>
 
                     <!-- Node.js -->
                     <div class="relative group flex flex-col items-center" role="listitem">
-                        <img src="./assets/icons/node.svg" 
-                             alt="Node.js logo" 
-                             class="w-10 h-10 mb-1"
-                             loading="lazy">
+                        <img src="./assets/icons/node.svg" alt="Node.js logo" class="w-10 h-10 mb-1" loading="lazy">
                         <span class="text-green-600 font-bold tracking-widest" aria-label="Node.js">N</span>
                         <div class="absolute bottom-14 bg-green-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity"
-                             role="tooltip">
+                            role="tooltip">
                             Node.js
                         </div>
                     </div>
                 </div>
 
-                
+
             </section>
 
             <!-- Right: Illustration -->
             <aside class="flex-1 flex items-center justify-center">
-                <img src="./assets/images/coder.svg" 
-                     alt="Developer illustration" 
-                     class="w-64 h-64 opacity-80"
-                     loading="lazy">
+                <img src="./assets/images/coder.svg" alt="Developer illustration" class="w-64 h-64 opacity-80"
+                    loading="lazy">
             </aside>
         </div>
     </main>
 
     <!-- Improved animation script with error handling -->
     <script>
-        (function() {
+        (function () {
             'use strict';
-            
+
             function initializeAboutPopup() {
                 const popup = document.getElementById('aboutPopup');
                 if (!popup) return;
-                
+
                 // Add entrance animation
                 const animatePopup = () => {
                     popup.classList.remove('opacity-0', 'scale-95');
                     popup.classList.add('opacity-100', 'scale-100');
                 };
-                
+
                 // Use requestAnimationFrame for better performance
                 requestAnimationFrame(() => {
                     setTimeout(animatePopup, 50);
                 });
             }
-            
+
             // Initialize when DOM is ready
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', initializeAboutPopup);
@@ -148,4 +151,5 @@
         })();
     </script>
 </body>
+
 </html>

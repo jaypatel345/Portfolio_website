@@ -13,6 +13,7 @@
   <link rel="preload" href="font.css" as="style">
   <link rel="preload" href="output.css" as="style">
   <link rel="preload" href="style.css" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="font.css">
@@ -22,6 +23,7 @@
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link href="https://cdn.openai.com/fonts/OpenAISans.css" rel="stylesheet">
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Critical styles -->
@@ -46,10 +48,10 @@
 
     /* Light theme variables */
     .light {
-      --bg-primary: #f4f5f57b;
+      --bg-primary: #f4f5f5;
       --bg-secondary: #f8f9fa;
       --text-primary: #1a1a1a;
-      --text-secondary: #6c757d;
+      --text-secondary: #3b3c3c;
       --text-muted: #495057;
       --accent-primary: #1788ae;
       --accent-secondary: #4595eb;
@@ -64,7 +66,7 @@
 
     /* Dark theme variables */
     .dark {
-      --bg-primary: #111;
+      --bg-primary: #1D1D1F;
       --bg-secondary: #232323;
       --text-primary: #ffffff;
       --text-secondary: #b0b2c3;
@@ -92,7 +94,10 @@
       color: var(--text-primary);
       transition: background-color 0.3s ease, color 0.3s ease;
       font-family: "OpenAI Sans", sans-serif;
+
+      font-family: 'Poppins', sans-serif;
     }
+
 
     /* Theme-aware transitions for smooth switching */
     * {
@@ -190,7 +195,7 @@
 
         <!-- Theme Toggle Button -->
         <button id="themeToggle"
-          class="p-2  hover:bg-white/10 rounded-full transition-colors duration-200 focus:outline-none text-[#ff5733]"
+          class="p-2  hover:bg-white/10 rounded-full transition-colors duration-200 focus:outline-none mr-4 md:mr-0"
           aria-label="Toggle dark/light theme">
           <!-- Sun icon for dark mode -->
           <svg id="sunIcon" class="w-6 h-6" style="color: var(--text-primary);" xmlns="http://www.w3.org/2000/svg"
@@ -234,16 +239,26 @@
           <path d="M260 70 L260 240 Q260 280 230 280 L140 280 L140 260 L230 260 Q240 260 240 240 L240 70 Z"
             stroke="url(#paint0_linear)" stroke-opacity="0" stroke-width="10" />
         </svg>
-        <div class="relative ml-4 md:ml-12">
-          <h1 class="pointer-events-none text-4xl md:text-[70px]  mr-12" style="color: var(--text-primary);">
+        <div class="relative ml-4 md:ml-12  ">
+          <p class="text-6xl md:text-[70px] my-1 font-mono  pointer-events-none"
+            style="color: var(--text-secondary); ">
+            Hey,I'm
+          </p>
+
+          <h1 class="text-6xl md:text-[70px] pb-5 font-medium
+           bg-gradient-to-r from-[#4169e1] to-[#89CFF0]
+           bg-clip-text text-transparent block w-fit mr-12 ">
             Jay Patel
           </h1>
-          <p class="pointer-events-none   my-4 md:my-8" style="color: var(--text-secondary);">
-            MERN Stack Developer
-          </p>
+
+          <div class="typed-wrapper">
+            <span id="typed-element" class="pointer-events-none mb-8 text-lg font-normal"
+              style="color: var(--text-secondary);">
+              MERN Stack Developer
+            </span>
+          </div>
           <button id="aboutMeBtn"
-            class="py-2 px-5 rounded-lg  font-medium relative hover:opacity-90 ease-in-out duration-200 group"
-            style="background: linear-gradient(to left, var(--accent-primary), var(--accent-secondary)); color:white;">
+            class="py-2 px-6 rounded-lg flex font-medium relative text-white ease-in-out duration-200 group  bg-gradient-to-l from-[#4169e1] to-[#89CFF0]">
             About Me
 
             <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
@@ -270,7 +285,7 @@
         </div>
       </div>
 
-      <ul class="ml-auto space-y-8 text-[#b0b2c3]  right-8 fixed">
+      <ul class="ml-auto space-y-8 text-[#b0b2c3]  right-1 relative md:right-8  md:fixed pt-1 z-50">
         <li>
           <a href="https://www.linkedin.com/in/jay-patel-19857b102/" target="_blank">
             <svg class="w-6 hover:text-gray-500/50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -317,7 +332,7 @@
     <div
       class="relative self-center after:content-[''] after:absolute after:w-[2px] after:h-5 after:bg-[#1888AE] after:left-1/2 after:-translate-x-1/2 after:top-[100px]">
       <button id="latestWorkBtn"
-        class="bg-[#1788ae] py-2 px-5 rounded-lg  text-white  bg-gradient-to-l from-[#1788ae] to-[#83aaf3e6]  relative hover:opacity-90 ease-out duration-200 group mb-20">
+        class="bg-[#1788ae] py-2 px-5 rounded-lg  text-white  bg-gradient-to-l from-[#4169e1] to-[#89CFF0]   relative  ease-out duration-200 group mb-20">
         Latest Works
 
         <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
@@ -350,7 +365,7 @@
         style="background-color: var(--bg-primary); color: var(--text-primary); border-color: var(--accent-primary); ">
         Latest Works
       </h2>
-      <div class="flex flex-col sm:flex-row gap-4 mt-8 sm:gap-[80px] items-center sm:mt-20 relative">
+      <div class="flex flex-col sm:flex-row gap-4 mt-28 sm:gap-[80px] items-center sm:mt-20 relative">
         <div class="h-[1px] left-1/4 right-1/2 absolute top-1/2 hidden sm:block"
           style="background-color: var(--accent-primary);"></div>
         <div
@@ -361,7 +376,7 @@
           class="flex w-full relative justify-center sm:justify-start">
           <div class="flex flex-col items-center relative group sm:hover:scale-105 ease-in-out duration-200">
             <img class="max-w-[400px] w-full mr-auto relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
-              src="./assets/images/PromptX.webp" alt="" />
+              src="./assets/images/promptx1.png" alt="" />
             <span
               class="flex group-hover:-top-14 ease-jump duration-200 sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-2 after:h-2 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2"
               style="background-color: var(--accent-secondary); color: var(--text-primary);">PromptX
@@ -420,7 +435,7 @@
         </div>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative">
+      <div class="flex flex-col sm:flex-row gap-4 mt-28 sm:gap-[80px] items-center sm:mt-20 relative">
         <div class="order-2 sm:order-1 w-full">
           <h3 class=" text-2xl md:text-3xl" style="color: var(--accent-tertiary);">
             Crypto Vault
@@ -501,7 +516,7 @@
         </a>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative">
+      <div class="flex flex-col sm:flex-row gap-4 mt-28 sm:gap-[80px] items-center sm:mt-20 relative">
         <div class="h-[1px] left-1/4 right-1/2 absolute top-1/2 hidden sm:block"
           style="background-color: var(--accent-primary);"></div>
         <div
@@ -579,7 +594,7 @@
           </ul>
         </div>
       </div>
-      <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative">
+      <div class="flex flex-col sm:flex-row gap-4 mt-28 sm:gap-[80px] items-center sm:mt-20 relative">
         <div class="order-2 sm:order-1 w-full">
           <h3 class=" text-2xl md:text-3xl" style="color: var(--accent-tertiary);">
             Portfolio Website
@@ -645,20 +660,22 @@
           </div>
         </a>
       </div>
-      <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative">
+      <div class="flex flex-col sm:flex-row gap-4 mt-28 sm:gap-[80px] items-center sm:mt-20 relative">
         <div class="h-[1px] left-1/4 right-1/2 absolute top-1/2 hidden sm:block"
           style="background-color: var(--accent-primary);"></div>
         <div
           class="w-4 h-4 rounded-full border-[3px] absolute left-1/2 -translate-x-1/2 z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block"
           style="border-color: var(--accent-secondary); background-color: var(--bg-primary);">
         </div>
-        <a href="#" class="flex w-full relative justify-center sm:justify-start">
+        <a href="https://noelle-seven.vercel.app/" class="flex w-full relative justify-center sm:justify-start"
+          target="_blank">
           <div class="flex flex-col items-center relative group hover:scale-105 ease-in-out sm:mr-auto duration-200">
             <img class="max-w-[400px] w-full mr-auto relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
-              src="./assets/images/cvm.png" alt="" />
+              src="./assets/images/Noelle.png" alt="" />
             <span
               class="flex group-hover:-top-14 ease-jump duration-200 sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2"
-              style="background-color: var(--accent-secondary); color: var(--text-primary);">Cvm_Gcet
+              style="background-color: var(--accent-secondary); color: var(--text-primary);">
+              Noelle
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-external-link">
@@ -672,28 +689,27 @@
 
         <div class="w-full">
           <h3 class=" text-md md:text-3xl" style="color: var(--accent-secondary);">
-            CVM Website
+            E-Commerce Platform
           </h3>
-          <span class="text-base md:text-md" style="color: var(--accent-secondary);">(Community Project)</span>
+          <span class="text-base md:text-md" style="color: var(--accent-secondary);">(Full-Stack Online Store)</span>
           <p class="text-justify text-sm md:text-base mt-2" style="color: var(--text-primary);">
-            Being the lead developer, developed a fast, responsive, and informative website for GCET under the CVM
-            group.
-            Focused on a clean, professional interface and accessible design. Worked closely with the design team to
-            translate mockups into a fully functional, user-friendly platform.
+            Built a modern, fully responsive e-commerce platform from scratch using Next.js, React, TypeScript, and
+            Tailwind CSS. Designed with a strong focus on scalability, performance, and user experience, the platform
+            provides a seamless shopping journey from product discovery to checkout.
           </p>
 
           <ul class="flex flex-wrap gap-2 mt-2">
             <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
               style="border-color: var(--border-color); color: var(--text-secondary);">
-              #react.js
+              #Next.js
             </li>
             <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
               style="border-color: var(--border-color); color: var(--text-secondary);">
-              #express.js
+              #React
             </li>
             <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
               style="border-color: var(--border-color); color: var(--text-secondary);">
-              #node.js
+              #TypeScript
             </li>
             <!-- <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
             #swiper.js
@@ -708,15 +724,16 @@
             </li>
             <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
               style="border-color: var(--border-color); color: var(--text-secondary);">
-              #css
+              #Authentication
             </li>
             <li class="border rounded-[50px] px-[10px] py-[5px] text-sm md:text-base"
               style="border-color: var(--border-color); color: var(--text-secondary);">
               #javascript
             </li>
-            <!-- <li class="border rounded-[50px] border-[#999] px-[10px] py-[5px] text-sm md:text-base">
-            #figma
-          </li> -->
+            <li class="border rounded-[50px]  px-[10px] py-[5px] text-sm md:text-base"
+              style="border-color: var(--border-color); color: var(--text-secondary);">
+              #PaymentGateway
+            </li>
           </ul>
         </div>
       </div>
@@ -725,7 +742,7 @@
     </section>
 
 
-    <section class="max-w-screen-xl mx-auto px-4 pb-12">
+    <section class="max-w-screen-xl mx-auto px-4 pb-12 mt-10">
       <h2
         class="text-3xl sm:text-[40px] relative z-10 font-bold px-4 py-2 w-max mx-auto text-center sm:border-2 rounded-md"
         style="background-color: var(--bg-primary); color: var(--accent-primary); border-color: var(--accent-primary);">
@@ -770,7 +787,7 @@
               </div>
             </div>
             <!-- Email Field -->
-            <div class="mb-4">
+            <div class="mb-4 ">
               <label for="email" class="block mb-2 text-sm font-medium" style="color: var(--text-primary);">
                 Email <span class="text-red-500" aria-label="required">*</span>
               </label>
@@ -1336,9 +1353,24 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var typed = new Typed("#typed-element", {
+      strings: [
+        "MERN Stack Developer",
+        "JavaScript Enthusiast",
+        "Full-Stack Engineer"
+
+      ],
+      typeSpeed: 90,
+      backSpeed: 80,
+
+      loop: true,
+      showCursor: true,
+    });
+  </script>
 
   <!-- Initialize Swiper -->
-  <script>
+  <!-- <script>
     var swiper = new Swiper(".mySwiper", {
       navigation: {
         nextEl: ".swiper-button-next",
@@ -1352,7 +1384,7 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"></script>
   <script src="https://cdn/jsdelivr.net/npm/matter-wrap@0.2.0/build/matter-wrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/matter-attractors@0.1.6/build/matter-attractors.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/matter-attractors@0.1.6/build/matter-attractors.min.js"></script> -->
 </body>
 
 </html>

@@ -34,6 +34,32 @@
 6. Use the user's configured `sans` font-variation-settings by default.
 7. Disable tap highlights on iOS
 */
+/* #typed-element {
+  display: inline-block;
+  min-width: 100px;  /* reserve enough width */
+  /* min-height: 50px; */
+    /* reserve enough height */
+
+  .typed-wrapper {
+  display: inline-block;
+  min-width: 250px;   /* widest expected string */
+  height: 72px;       /* line height */
+  vertical-align: bottom;
+}
+
+
+ @font-face {
+  font-family: "Helvetica";
+  src: url("../fonts/Helvetica.woff2") format("woff2"),
+       url("../fonts/Helvetica.woff") format("woff"),
+       url("./fonts/Helvetica.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Helvetica", Arial, sans-serif;
+}
 
 html,
 :host {
@@ -1067,9 +1093,7 @@ video {
   background-color: rgb(255 229 120 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#ffe578ffe578\] {
-  background-color: #ffe578ffe578;
-}
+
 
 .bg-\[\#47afa1\] {
   --tw-bg-opacity: 1;
@@ -1091,7 +1115,7 @@ video {
 }
 
 .bg-\[\#\#1f2937\] {
-  background-color: ##1f2937;
+  background-color: #1f2937;
 }
 
 .bg-\[\#1f2937\] {
