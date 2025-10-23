@@ -150,6 +150,105 @@ strong {
   font-weight: bolder;
 }
 
+
+
+/* === HERO SECTION LAYOUT === */
+
+
+/* Text Area */
+
+
+/* === IMAGE STYLING === */
+.image-container {
+  flex: 1 1 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 2rem;
+}
+
+.profile-image {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top; /* keeps your face fully visible */
+  border: 4px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 40px rgba(79, 172, 254, 0.35);
+  
+  background-color: transparent;
+}
+
+/* Animated gradient glow ring */
+.image-container::before {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #00fff0,
+   
+  );
+  filter: blur(25px);
+  opacity: 0.25;
+  z-index: 0;
+  
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hover effects */
+.profile-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 50px rgba(79, 172, 254, 0.5);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 1024px) {
+  .flex.relative {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .relative.ml-4 {
+    flex: none;
+    margin-bottom: 2rem;
+  }
+
+  .image-container {
+    flex: none;
+    margin: 0 auto;
+  }
+
+  .profile-image {
+    width: 260px;
+    height: 260px;
+  }
+
+  .image-container::before {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .image-container::before {
+    width: 230px;
+    height: 230px;
+  }
+}
 /*
 1. Use the user's configured `mono` font-family by default.
 2. Use the user's configured `mono` font-feature-settings by default.
