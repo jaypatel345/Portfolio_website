@@ -13,12 +13,12 @@
 <body class="bg-[#111] text-white font-['Nunito']">
     <!-- Main popup container with improved accessibility -->
     <main id="aboutPopup"
-        class="bg-[#232323] rounded-2xl p-8 md:p-12 max-w-4xl w-full mx-auto mt-20 relative z-50 shadow-lg opacity-0 scale-95 transform transition duration-500 ease-out"
+        class="bg-[#232323] rounded-2xl p-8 md:p-12 max-w-4xl w-full mx-auto mt-20 relative z-50  opacity-0  transform transition duration-500 ease-out"
         role="dialog" aria-labelledby="about-title" aria-describedby="about-description">
 
         <!-- Close button with improved accessibility -->
         <button id="aboutCloseBtn"
-            class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded"
+            class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold  "
             aria-label="Close about me popup" type="button">
             &times;
         </button>
@@ -29,12 +29,32 @@
                 <h1 id="about-title" class="text-cyan-400 text-2xl font-bold mb-4 flex items-center">
                     ABOUT ME
                     <a href="./assets/JayCV.pdf" download
-                        class="ml-5 text-white font-medium text-[12px] px-3 py-1 rounded-md bg-gradient-to-l from-[#4169e1] to-[#89CFF0] hover:opacity-90 transition ease-in-out duration-200">
-                        Download CV
+                        class="ml-5 text-white font-medium text-[12px] px-2 py-0.5 rounded-md bg-gradient-to-l from-[#4169e1] to-[#89CFF0] hover:opacity-90 transition ease-in-out duration-200 flex gap-1 justify-center items-center">
+                        <svg width="15" height="15" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 128 128" fill="white">
+                            <path
+                                d="M117.173 78.583h-12.167a1.75 1.75 0 0 0-1.75 1.75v31.98H24.744v-31.98a1.75 1.75 0 0 0-1.75-1.75H10.827a1.75 1.75 0 0 0-1.75 1.75v45.9a1.75 1.75 0 0 0 1.75 1.75h106.346a1.75 1.75 0 0 0 1.75-1.75v-45.9a1.75 1.75 0 0 0-1.75-1.75zm-1.75 45.9H12.577v-42.4h8.667v31.98a1.75 1.75 0 0 0 1.75 1.75h82.013a1.75 1.75 0 0 0 1.75-1.75v-31.98h8.667z" />
+                            <path
+                                d="M62.763 90.018a1.771 1.771 0 0 0 2.475 0L97.764 57.49a1.771 1.771 0 0 0 0-2.475l-8.6-8.6a1.749 1.749 0 0 0-2.475 0L71.833 61.266V1.73a1.75 1.75 0 0 0-1.75-1.75H57.917a1.75 1.75 0 0 0-1.75 1.75v59.536L41.313 46.413a1.749 1.749 0 0 0-2.475 0l-8.6 8.6a1.771 1.771 0 0 0 0 2.475zM40.076 50.125l16.6 16.6a1.75 1.75 0 0 0 2.987-1.237V3.48h8.667v62.01a1.75 1.75 0 0 0 2.987 1.237l16.6-16.6 6.128 6.128L64 86.306 33.948 56.253z" />
+                        </svg>
+                        Resume
                     </a>
-                    <a href="./assets/JayCV.pdf" target="_blank" rel="noopener noreferrer"
-                        class="ml-2 text-white font-medium text-[12px] px-3 py-1 rounded-md bg-gradient-to-l from-[#4169e1] to-[#89CFF0] hover:opacity-90 transition ease-in-out duration-200">
-                        View CV
+                    <a href="./assets/JayCV.pdf" target="_blank"
+                        class="ml-2 text-white hover:text-gray-400 transition-colors duration-200 opacity-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                            width="20" height="20" viewBox="0 0 256 256" xml:space="preserve">
+                            <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
+                                transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                                <path
+                                    d="M 45 73.264 c -14.869 0 -29.775 -8.864 -44.307 -26.346 c -0.924 -1.112 -0.924 -2.724 0 -3.836 C 15.225 25.601 30.131 16.737 45 16.737 c 14.868 0 29.775 8.864 44.307 26.345 c 0.925 1.112 0.925 2.724 0 3.836 C 74.775 64.399 59.868 73.264 45 73.264 z M 6.934 45 C 19.73 59.776 32.528 67.264 45 67.264 c 12.473 0 25.27 -7.487 38.066 -22.264 C 70.27 30.224 57.473 22.737 45 22.737 C 32.528 22.737 19.73 30.224 6.934 45 z"
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: currentColor; fill-rule: nonzero; opacity: 1;"
+                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                <path
+                                    d="M 45 62 c -9.374 0 -17 -7.626 -17 -17 s 7.626 -17 17 -17 s 17 7.626 17 17 S 54.374 62 45 62 z M 45 34 c -6.065 0 -11 4.935 -11 11 s 4.935 11 11 11 s 11 -4.935 11 -11 S 51.065 34 45 34 z"
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: currentColor; fill-rule: nonzero; opacity: 1;"
+                                    transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                            </g>
+                        </svg>
                     </a>
                 </h1>
 

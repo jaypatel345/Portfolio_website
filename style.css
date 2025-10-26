@@ -12,21 +12,27 @@
 }
 
 
-/* Focus styles for accessibility */
-button:focus,
-input:focus,
-textarea:focus,
-a:focus {
-    outline: 2px solid #1788ae;
-    outline-offset: 2px;
-}
 
-/* Enhanced button hover effects */
-button:hover {
+
+
+/* Enhanced button hover effects
+.about-title:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(23, 136, 174, 0.3);
+} */
+
+/* Enhanced button hover effects */
+#aboutMeBtn ,
+#latestWorkBtn{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
+#aboutMeBtn:hover,
+#latestWorkBtn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(19, 107, 136, 0.3);
+}
 /* Improved form field focus states */
 input:focus,
 textarea:focus {
